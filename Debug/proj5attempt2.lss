@@ -1,0 +1,3439 @@
+
+proj5attempt2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000078  00800100  000013e8  0000147c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000013e8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000001e  00800178  00800178  000014f4  2**0
+                  ALLOC
+  3 .comment      0000005c  00000000  00000000  000014f4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001550  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000118  00000000  00000000  00001590  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000019f1  00000000  00000000  000016a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000c0a  00000000  00000000  00003099  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000e95  00000000  00000000  00003ca3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000380  00000000  00000000  00004b38  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000718  00000000  00000000  00004eb8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001656  00000000  00000000  000055d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000100  00000000  00000000  00006c26  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2e 00 	jmp	0x5c	; 0x5c <__ctors_end>
+       4:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+       8:	0c 94 36 05 	jmp	0xa6c	; 0xa6c <__vector_2>
+       c:	0c 94 4e 06 	jmp	0xc9c	; 0xc9c <__vector_3>
+      10:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      14:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      18:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      1c:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      20:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      24:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      28:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      2c:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      30:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      34:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      38:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      3c:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      40:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      44:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      48:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      4c:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      50:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      54:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+      58:	0c 94 4b 00 	jmp	0x96	; 0x96 <__bad_interrupt>
+
+0000005c <__ctors_end>:
+      5c:	11 24       	eor	r1, r1
+      5e:	1f be       	out	0x3f, r1	; 63
+      60:	cf ef       	ldi	r28, 0xFF	; 255
+      62:	d4 e0       	ldi	r29, 0x04	; 4
+      64:	de bf       	out	0x3e, r29	; 62
+      66:	cd bf       	out	0x3d, r28	; 61
+
+00000068 <__do_copy_data>:
+      68:	11 e0       	ldi	r17, 0x01	; 1
+      6a:	a0 e0       	ldi	r26, 0x00	; 0
+      6c:	b1 e0       	ldi	r27, 0x01	; 1
+      6e:	e8 ee       	ldi	r30, 0xE8	; 232
+      70:	f3 e1       	ldi	r31, 0x13	; 19
+      72:	02 c0       	rjmp	.+4      	; 0x78 <__do_copy_data+0x10>
+      74:	05 90       	lpm	r0, Z+
+      76:	0d 92       	st	X+, r0
+      78:	a8 37       	cpi	r26, 0x78	; 120
+      7a:	b1 07       	cpc	r27, r17
+      7c:	d9 f7       	brne	.-10     	; 0x74 <__do_copy_data+0xc>
+
+0000007e <__do_clear_bss>:
+      7e:	21 e0       	ldi	r18, 0x01	; 1
+      80:	a8 e7       	ldi	r26, 0x78	; 120
+      82:	b1 e0       	ldi	r27, 0x01	; 1
+      84:	01 c0       	rjmp	.+2      	; 0x88 <.do_clear_bss_start>
+
+00000086 <.do_clear_bss_loop>:
+      86:	1d 92       	st	X+, r1
+
+00000088 <.do_clear_bss_start>:
+      88:	a6 39       	cpi	r26, 0x96	; 150
+      8a:	b2 07       	cpc	r27, r18
+      8c:	e1 f7       	brne	.-8      	; 0x86 <.do_clear_bss_loop>
+      8e:	0e 94 14 05 	call	0xa28	; 0xa28 <main>
+      92:	0c 94 f2 09 	jmp	0x13e4	; 0x13e4 <_exit>
+
+00000096 <__bad_interrupt>:
+      96:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000009a <ADCSetup>:
+}
+
+// modify this command to return ADC, value.  Hint: you can access it by using the macro symbol ADC.  Note, if accessing the high and low bytes individually, access ADCL first then ADCH
+uint16_t ADCGet(){
+   return ADC;
+}
+      9a:	ee e7       	ldi	r30, 0x7E	; 126
+      9c:	f0 e0       	ldi	r31, 0x00	; 0
+      9e:	80 81       	ld	r24, Z
+      a0:	81 60       	ori	r24, 0x01	; 1
+      a2:	80 83       	st	Z, r24
+      a4:	82 e4       	ldi	r24, 0x42	; 66
+      a6:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7e007c>
+      aa:	80 e8       	ldi	r24, 0x80	; 128
+      ac:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7e007a>
+      b0:	08 95       	ret
+
+000000b2 <ADCStartConversion>:
+      b2:	ea e7       	ldi	r30, 0x7A	; 122
+      b4:	f0 e0       	ldi	r31, 0x00	; 0
+      b6:	80 81       	ld	r24, Z
+      b8:	80 64       	ori	r24, 0x40	; 64
+      ba:	80 83       	st	Z, r24
+      bc:	08 95       	ret
+
+000000be <ADCClearConversionFlag>:
+      be:	ea e7       	ldi	r30, 0x7A	; 122
+      c0:	f0 e0       	ldi	r31, 0x00	; 0
+      c2:	80 81       	ld	r24, Z
+      c4:	80 61       	ori	r24, 0x10	; 16
+      c6:	80 83       	st	Z, r24
+      c8:	08 95       	ret
+
+000000ca <ADCAquire>:
+
+int ADCAquire(){
+    ADCClearConversionFlag();
+      ca:	0e 94 5f 00 	call	0xbe	; 0xbe <ADCClearConversionFlag>
+    ADCStartConversion();
+      ce:	0e 94 59 00 	call	0xb2	; 0xb2 <ADCStartConversion>
+void ADCClearConversionFlag(){
+ADCSRA |= (1<<ADIF); //all interrupt flags are cleared by writing a one
+}
+
+int ADCIsConversionCompleteFlagSet(){
+  return(ADCSRA & (1<<ADIF));
+      d2:	ea e7       	ldi	r30, 0x7A	; 122
+      d4:	f0 e0       	ldi	r31, 0x00	; 0
+      d6:	80 81       	ld	r24, Z
+}
+
+int ADCAquire(){
+    ADCClearConversionFlag();
+    ADCStartConversion();
+    while(! ADCIsConversionCompleteFlagSet() );
+      d8:	84 ff       	sbrs	r24, 4
+      da:	fd cf       	rjmp	.-6      	; 0xd6 <ADCAquire+0xc>
+  return(ADCSRA & (1<<ADIF));
+}
+
+// modify this command to return ADC, value.  Hint: you can access it by using the macro symbol ADC.  Note, if accessing the high and low bytes individually, access ADCL first then ADCH
+uint16_t ADCGet(){
+   return ADC;
+      dc:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7e0078>
+      e0:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7e0079>
+int ADCAquire(){
+    ADCClearConversionFlag();
+    ADCStartConversion();
+    while(! ADCIsConversionCompleteFlagSet() );
+    return ADCGet();
+      e4:	08 95       	ret
+
+000000e6 <InitializeServo>:
+//Return: Angle
+//Description:converts index to angle of servo
+int IndexToAngle(int index){
+	int angle = index *20;
+	return angle;
+}
+      e6:	24 9a       	sbi	0x04, 4	; 4
+      e8:	84 b5       	in	r24, 0x24	; 36
+      ea:	88 60       	ori	r24, 0x08	; 8
+      ec:	84 bd       	out	0x24, r24	; 36
+      ee:	84 b5       	in	r24, 0x24	; 36
+      f0:	80 64       	ori	r24, 0x40	; 64
+      f2:	84 bd       	out	0x24, r24	; 36
+      f4:	84 b5       	in	r24, 0x24	; 36
+      f6:	84 60       	ori	r24, 0x04	; 4
+      f8:	84 bd       	out	0x24, r24	; 36
+      fa:	84 b5       	in	r24, 0x24	; 36
+      fc:	84 bd       	out	0x24, r24	; 36
+      fe:	84 b5       	in	r24, 0x24	; 36
+     100:	84 bd       	out	0x24, r24	; 36
+     102:	84 b5       	in	r24, 0x24	; 36
+     104:	80 62       	ori	r24, 0x20	; 32
+     106:	84 bd       	out	0x24, r24	; 36
+     108:	84 b5       	in	r24, 0x24	; 36
+     10a:	84 bd       	out	0x24, r24	; 36
+     10c:	16 bc       	out	0x26, r1	; 38
+     10e:	08 95       	ret
+
+00000110 <InitializeJoyStick>:
+     110:	84 b1       	in	r24, 0x04	; 4
+     112:	8f 73       	andi	r24, 0x3F	; 63
+     114:	84 b9       	out	0x04, r24	; 4
+     116:	6b 98       	cbi	0x0d, 3	; 13
+     118:	85 b1       	in	r24, 0x05	; 5
+     11a:	80 6c       	ori	r24, 0xC0	; 192
+     11c:	85 b9       	out	0x05, r24	; 5
+     11e:	73 9a       	sbi	0x0e, 3	; 14
+     120:	08 95       	ret
+
+00000122 <InitializeLCD>:
+     122:	0e 94 db 06 	call	0xdb6	; 0xdb6 <LCD_Init>
+     126:	8c e6       	ldi	r24, 0x6C	; 108
+     128:	91 e0       	ldi	r25, 0x01	; 1
+     12a:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     12e:	08 95       	ret
+
+00000130 <InitializeInterrupts>:
+     130:	78 94       	sei
+     132:	ee 9a       	sbi	0x1d, 6	; 29
+     134:	ef 9a       	sbi	0x1d, 7	; 29
+     136:	ec e6       	ldi	r30, 0x6C	; 108
+     138:	f0 e0       	ldi	r31, 0x00	; 0
+     13a:	80 81       	ld	r24, Z
+     13c:	80 64       	ori	r24, 0x40	; 64
+     13e:	80 83       	st	Z, r24
+     140:	80 81       	ld	r24, Z
+     142:	80 68       	ori	r24, 0x80	; 128
+     144:	80 83       	st	Z, r24
+     146:	eb e6       	ldi	r30, 0x6B	; 107
+     148:	f0 e0       	ldi	r31, 0x00	; 0
+     14a:	80 81       	ld	r24, Z
+     14c:	88 60       	ori	r24, 0x08	; 8
+     14e:	80 83       	st	Z, r24
+     150:	08 95       	ret
+
+00000152 <FullSweep>:
+     152:	8f 92       	push	r8
+     154:	9f 92       	push	r9
+     156:	af 92       	push	r10
+     158:	bf 92       	push	r11
+     15a:	df 92       	push	r13
+     15c:	ef 92       	push	r14
+     15e:	ff 92       	push	r15
+     160:	0f 93       	push	r16
+     162:	1f 93       	push	r17
+     164:	cf 93       	push	r28
+     166:	df 93       	push	r29
+     168:	00 d0       	rcall	.+0      	; 0x16a <FullSweep+0x18>
+     16a:	00 d0       	rcall	.+0      	; 0x16c <FullSweep+0x1a>
+     16c:	00 d0       	rcall	.+0      	; 0x16e <FullSweep+0x1c>
+     16e:	cd b7       	in	r28, 0x3d	; 61
+     170:	de b7       	in	r29, 0x3e	; 62
+     172:	f8 94       	cli
+     174:	0f 2e       	mov	r0, r31
+     176:	fc e7       	ldi	r31, 0x7C	; 124
+     178:	ef 2e       	mov	r14, r31
+     17a:	f1 e0       	ldi	r31, 0x01	; 1
+     17c:	ff 2e       	mov	r15, r31
+     17e:	f0 2d       	mov	r31, r0
+     180:	1f e0       	ldi	r17, 0x0F	; 15
+     182:	0f 2e       	mov	r0, r31
+     184:	f0 e7       	ldi	r31, 0x70	; 112
+     186:	8f 2e       	mov	r8, r31
+     188:	f1 e0       	ldi	r31, 0x01	; 1
+     18a:	9f 2e       	mov	r9, r31
+     18c:	f0 2d       	mov	r31, r0
+     18e:	ce 01       	movw	r24, r28
+     190:	01 96       	adiw	r24, 0x01	; 1
+     192:	5c 01       	movw	r10, r24
+     194:	17 bd       	out	0x27, r17	; 39
+     196:	9f eb       	ldi	r25, 0xBF	; 191
+     198:	e7 e2       	ldi	r30, 0x27	; 39
+     19a:	f9 e0       	ldi	r31, 0x09	; 9
+     19c:	91 50       	subi	r25, 0x01	; 1
+     19e:	e0 40       	sbci	r30, 0x00	; 0
+     1a0:	f0 40       	sbci	r31, 0x00	; 0
+     1a2:	e1 f7       	brne	.-8      	; 0x19c <FullSweep+0x4a>
+     1a4:	00 c0       	rjmp	.+0      	; 0x1a6 <FullSweep+0x54>
+     1a6:	00 00       	nop
+     1a8:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     1ac:	d8 2e       	mov	r13, r24
+     1ae:	09 2f       	mov	r16, r25
+     1b0:	9f 93       	push	r25
+     1b2:	8f 93       	push	r24
+     1b4:	9f 92       	push	r9
+     1b6:	8f 92       	push	r8
+     1b8:	bf 92       	push	r11
+     1ba:	af 92       	push	r10
+     1bc:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+     1c0:	c5 01       	movw	r24, r10
+     1c2:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     1c6:	f7 01       	movw	r30, r14
+     1c8:	d0 82       	st	Z, r13
+     1ca:	01 83       	std	Z+1, r16	; 0x01
+     1cc:	f2 e0       	ldi	r31, 0x02	; 2
+     1ce:	ef 0e       	add	r14, r31
+     1d0:	f1 1c       	adc	r15, r1
+     1d2:	19 5f       	subi	r17, 0xF9	; 249
+     1d4:	0f 90       	pop	r0
+     1d6:	0f 90       	pop	r0
+     1d8:	0f 90       	pop	r0
+     1da:	0f 90       	pop	r0
+     1dc:	0f 90       	pop	r0
+     1de:	0f 90       	pop	r0
+     1e0:	1e 34       	cpi	r17, 0x4E	; 78
+     1e2:	c1 f6       	brne	.-80     	; 0x194 <FullSweep+0x42>
+     1e4:	8d e4       	ldi	r24, 0x4D	; 77
+     1e6:	87 bd       	out	0x27, r24	; 39
+     1e8:	2f eb       	ldi	r18, 0xBF	; 191
+     1ea:	87 e2       	ldi	r24, 0x27	; 39
+     1ec:	99 e0       	ldi	r25, 0x09	; 9
+     1ee:	21 50       	subi	r18, 0x01	; 1
+     1f0:	80 40       	sbci	r24, 0x00	; 0
+     1f2:	90 40       	sbci	r25, 0x00	; 0
+     1f4:	e1 f7       	brne	.-8      	; 0x1ee <FullSweep+0x9c>
+     1f6:	00 c0       	rjmp	.+0      	; 0x1f8 <FullSweep+0xa6>
+     1f8:	00 00       	nop
+     1fa:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     1fe:	08 2f       	mov	r16, r24
+     200:	19 2f       	mov	r17, r25
+     202:	9f 93       	push	r25
+     204:	8f 93       	push	r24
+     206:	80 e7       	ldi	r24, 0x70	; 112
+     208:	91 e0       	ldi	r25, 0x01	; 1
+     20a:	9f 93       	push	r25
+     20c:	8f 93       	push	r24
+     20e:	fe 01       	movw	r30, r28
+     210:	31 96       	adiw	r30, 0x01	; 1
+     212:	7f 01       	movw	r14, r30
+     214:	ff 93       	push	r31
+     216:	ef 93       	push	r30
+     218:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+     21c:	c7 01       	movw	r24, r14
+     21e:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     222:	ec e7       	ldi	r30, 0x7C	; 124
+     224:	f1 e0       	ldi	r31, 0x01	; 1
+     226:	02 8b       	std	Z+18, r16	; 0x12
+     228:	13 8b       	std	Z+19, r17	; 0x13
+     22a:	78 94       	sei
+     22c:	0f 90       	pop	r0
+     22e:	0f 90       	pop	r0
+     230:	0f 90       	pop	r0
+     232:	0f 90       	pop	r0
+     234:	0f 90       	pop	r0
+     236:	0f 90       	pop	r0
+     238:	26 96       	adiw	r28, 0x06	; 6
+     23a:	0f b6       	in	r0, 0x3f	; 63
+     23c:	f8 94       	cli
+     23e:	de bf       	out	0x3e, r29	; 62
+     240:	0f be       	out	0x3f, r0	; 63
+     242:	cd bf       	out	0x3d, r28	; 61
+     244:	df 91       	pop	r29
+     246:	cf 91       	pop	r28
+     248:	1f 91       	pop	r17
+     24a:	0f 91       	pop	r16
+     24c:	ff 90       	pop	r15
+     24e:	ef 90       	pop	r14
+     250:	df 90       	pop	r13
+     252:	bf 90       	pop	r11
+     254:	af 90       	pop	r10
+     256:	9f 90       	pop	r9
+     258:	8f 90       	pop	r8
+     25a:	08 95       	ret
+
+0000025c <findLowestADC>:
+     25c:	ec e7       	ldi	r30, 0x7C	; 124
+     25e:	f1 e0       	ldi	r31, 0x01	; 1
+     260:	20 e0       	ldi	r18, 0x00	; 0
+     262:	30 e0       	ldi	r19, 0x00	; 0
+     264:	60 ed       	ldi	r22, 0xD0	; 208
+     266:	77 e0       	ldi	r23, 0x07	; 7
+     268:	41 91       	ld	r20, Z+
+     26a:	51 91       	ld	r21, Z+
+     26c:	64 17       	cp	r22, r20
+     26e:	75 07       	cpc	r23, r21
+     270:	1c f0       	brlt	.+6      	; 0x278 <findLowestADC+0x1c>
+     272:	ba 01       	movw	r22, r20
+     274:	82 2f       	mov	r24, r18
+     276:	93 2f       	mov	r25, r19
+     278:	2f 5f       	subi	r18, 0xFF	; 255
+     27a:	3f 4f       	sbci	r19, 0xFF	; 255
+     27c:	2a 30       	cpi	r18, 0x0A	; 10
+     27e:	31 05       	cpc	r19, r1
+     280:	99 f7       	brne	.-26     	; 0x268 <findLowestADC+0xc>
+     282:	08 95       	ret
+
+00000284 <findHighestADC>:
+     284:	ec e7       	ldi	r30, 0x7C	; 124
+     286:	f1 e0       	ldi	r31, 0x01	; 1
+     288:	20 e0       	ldi	r18, 0x00	; 0
+     28a:	30 e0       	ldi	r19, 0x00	; 0
+     28c:	60 e0       	ldi	r22, 0x00	; 0
+     28e:	70 e0       	ldi	r23, 0x00	; 0
+     290:	41 91       	ld	r20, Z+
+     292:	51 91       	ld	r21, Z+
+     294:	46 17       	cp	r20, r22
+     296:	57 07       	cpc	r21, r23
+     298:	1c f0       	brlt	.+6      	; 0x2a0 <findHighestADC+0x1c>
+     29a:	ba 01       	movw	r22, r20
+     29c:	82 2f       	mov	r24, r18
+     29e:	93 2f       	mov	r25, r19
+     2a0:	2f 5f       	subi	r18, 0xFF	; 255
+     2a2:	3f 4f       	sbci	r19, 0xFF	; 255
+     2a4:	2a 30       	cpi	r18, 0x0A	; 10
+     2a6:	31 05       	cpc	r19, r1
+     2a8:	99 f7       	brne	.-26     	; 0x290 <findHighestADC+0xc>
+     2aa:	08 95       	ret
+
+000002ac <LocalSweep>:
+
+//Input: index of angle to start at
+//Return: n/a
+//Description: Performs local sweep at primary angle
+LocalSweep(int primaryIndex){
+     2ac:	5f 92       	push	r5
+     2ae:	6f 92       	push	r6
+     2b0:	7f 92       	push	r7
+     2b2:	8f 92       	push	r8
+     2b4:	9f 92       	push	r9
+     2b6:	af 92       	push	r10
+     2b8:	bf 92       	push	r11
+     2ba:	cf 92       	push	r12
+     2bc:	df 92       	push	r13
+     2be:	ef 92       	push	r14
+     2c0:	ff 92       	push	r15
+     2c2:	0f 93       	push	r16
+     2c4:	1f 93       	push	r17
+     2c6:	cf 93       	push	r28
+     2c8:	df 93       	push	r29
+     2ca:	00 d0       	rcall	.+0      	; 0x2cc <LocalSweep+0x20>
+     2cc:	00 d0       	rcall	.+0      	; 0x2ce <LocalSweep+0x22>
+     2ce:	00 d0       	rcall	.+0      	; 0x2d0 <LocalSweep+0x24>
+     2d0:	cd b7       	in	r28, 0x3d	; 61
+     2d2:	de b7       	in	r29, 0x3e	; 62
+     2d4:	7c 01       	movw	r14, r24
+	int arrayIndex = 0;
+	int tempADC;
+	char tempADCChar[6];
+	
+	//if primary Index == 0
+	if(primaryIndex == 0){
+     2d6:	00 97       	sbiw	r24, 0x00	; 0
+     2d8:	09 f0       	breq	.+2      	; 0x2dc <LocalSweep+0x30>
+     2da:	93 c2       	rjmp	.+1318   	; 0x802 <__stack+0x303>
+		arrayIndex = 1;
+		for(i = 15; i <= 19; i += 4){
+			
+			OCR0A = i;
+     2dc:	8f e0       	ldi	r24, 0x0F	; 15
+     2de:	87 bd       	out	0x27, r24	; 39
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     2e0:	2f e3       	ldi	r18, 0x3F	; 63
+     2e2:	32 e4       	ldi	r19, 0x42	; 66
+     2e4:	8f e0       	ldi	r24, 0x0F	; 15
+     2e6:	21 50       	subi	r18, 0x01	; 1
+     2e8:	30 40       	sbci	r19, 0x00	; 0
+     2ea:	80 40       	sbci	r24, 0x00	; 0
+     2ec:	e1 f7       	brne	.-8      	; 0x2e6 <LocalSweep+0x3a>
+     2ee:	00 c0       	rjmp	.+0      	; 0x2f0 <LocalSweep+0x44>
+     2f0:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     2f2:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     2f6:	88 2e       	mov	r8, r24
+     2f8:	99 2e       	mov	r9, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     2fa:	9f 93       	push	r25
+     2fc:	8f 93       	push	r24
+     2fe:	0f 2e       	mov	r0, r31
+     300:	f0 e7       	ldi	r31, 0x70	; 112
+     302:	af 2e       	mov	r10, r31
+     304:	f1 e0       	ldi	r31, 0x01	; 1
+     306:	bf 2e       	mov	r11, r31
+     308:	f0 2d       	mov	r31, r0
+     30a:	bf 92       	push	r11
+     30c:	af 92       	push	r10
+     30e:	fe 01       	movw	r30, r28
+     310:	31 96       	adiw	r30, 0x01	; 1
+     312:	6f 01       	movw	r12, r30
+     314:	ff 93       	push	r31
+     316:	ef 93       	push	r30
+     318:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     31c:	c6 01       	movw	r24, r12
+     31e:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     322:	00 e9       	ldi	r16, 0x90	; 144
+     324:	11 e0       	ldi	r17, 0x01	; 1
+     326:	f8 01       	movw	r30, r16
+     328:	82 82       	std	Z+2, r8	; 0x02
+     32a:	93 82       	std	Z+3, r9	; 0x03
+	//if primary Index == 0
+	if(primaryIndex == 0){
+		arrayIndex = 1;
+		for(i = 15; i <= 19; i += 4){
+			
+			OCR0A = i;
+     32c:	83 e1       	ldi	r24, 0x13	; 19
+     32e:	87 bd       	out	0x27, r24	; 39
+     330:	ff e3       	ldi	r31, 0x3F	; 63
+     332:	22 e4       	ldi	r18, 0x42	; 66
+     334:	3f e0       	ldi	r19, 0x0F	; 15
+     336:	f1 50       	subi	r31, 0x01	; 1
+     338:	20 40       	sbci	r18, 0x00	; 0
+     33a:	30 40       	sbci	r19, 0x00	; 0
+     33c:	e1 f7       	brne	.-8      	; 0x336 <LocalSweep+0x8a>
+     33e:	00 c0       	rjmp	.+0      	; 0x340 <LocalSweep+0x94>
+     340:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     342:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     346:	88 2e       	mov	r8, r24
+     348:	99 2e       	mov	r9, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     34a:	9f 93       	push	r25
+     34c:	8f 93       	push	r24
+     34e:	bf 92       	push	r11
+     350:	af 92       	push	r10
+     352:	df 92       	push	r13
+     354:	cf 92       	push	r12
+     356:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     35a:	c6 01       	movw	r24, r12
+     35c:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     360:	f8 01       	movw	r30, r16
+     362:	84 82       	std	Z+4, r8	; 0x04
+     364:	95 82       	std	Z+5, r9	; 0x05
+     366:	0f b6       	in	r0, 0x3f	; 63
+     368:	f8 94       	cli
+     36a:	de bf       	out	0x3e, r29	; 62
+     36c:	0f be       	out	0x3f, r0	; 63
+     36e:	cd bf       	out	0x3d, r28	; 61
+			arrayIndex++;
+     370:	03 e0       	ldi	r16, 0x03	; 3
+     372:	10 e0       	ldi	r17, 0x00	; 0
+     374:	a5 c0       	rjmp	.+330    	; 0x4c0 <__LOCK_REGION_LENGTH__+0xc0>
+	}
+	
+	//if primary Index == 1
+	if(primaryIndex == 1){
+		for(i = 18; i <= 26; i += 4){
+			OCR0A = i;
+     376:	17 bd       	out	0x27, r17	; 39
+     378:	3f e3       	ldi	r19, 0x3F	; 63
+     37a:	82 e4       	ldi	r24, 0x42	; 66
+     37c:	9f e0       	ldi	r25, 0x0F	; 15
+     37e:	31 50       	subi	r19, 0x01	; 1
+     380:	80 40       	sbci	r24, 0x00	; 0
+     382:	90 40       	sbci	r25, 0x00	; 0
+     384:	e1 f7       	brne	.-8      	; 0x37e <LocalSweep+0xd2>
+     386:	00 c0       	rjmp	.+0      	; 0x388 <LocalSweep+0xdc>
+     388:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     38a:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     38e:	78 2e       	mov	r7, r24
+     390:	09 2f       	mov	r16, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     392:	9f 93       	push	r25
+     394:	8f 93       	push	r24
+     396:	9f 92       	push	r9
+     398:	8f 92       	push	r8
+     39a:	bf 92       	push	r11
+     39c:	af 92       	push	r10
+     39e:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     3a2:	c5 01       	movw	r24, r10
+     3a4:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     3a8:	f6 01       	movw	r30, r12
+     3aa:	70 82       	st	Z, r7
+     3ac:	01 83       	std	Z+1, r16	; 0x01
+     3ae:	f2 e0       	ldi	r31, 0x02	; 2
+     3b0:	cf 0e       	add	r12, r31
+     3b2:	d1 1c       	adc	r13, r1
+     3b4:	1c 5f       	subi	r17, 0xFC	; 252
+		}
+	}
+	
+	//if primary Index == 1
+	if(primaryIndex == 1){
+		for(i = 18; i <= 26; i += 4){
+     3b6:	0f 90       	pop	r0
+     3b8:	0f 90       	pop	r0
+     3ba:	0f 90       	pop	r0
+     3bc:	0f 90       	pop	r0
+     3be:	0f 90       	pop	r0
+     3c0:	0f 90       	pop	r0
+     3c2:	1e 31       	cpi	r17, 0x1E	; 30
+     3c4:	c1 f6       	brne	.-80     	; 0x376 <LocalSweep+0xca>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     3c6:	03 e0       	ldi	r16, 0x03	; 3
+     3c8:	10 e0       	ldi	r17, 0x00	; 0
+     3ca:	52 c1       	rjmp	.+676    	; 0x670 <__stack+0x171>
+		}
+	}
+	
+	//if primary Index == 2
+	if(primaryIndex == 2){
+     3cc:	22 e0       	ldi	r18, 0x02	; 2
+     3ce:	e2 16       	cp	r14, r18
+     3d0:	f1 04       	cpc	r15, r1
+     3d2:	09 f0       	breq	.+2      	; 0x3d6 <LocalSweep+0x12a>
+     3d4:	2a c2       	rjmp	.+1108   	; 0x82a <__stack+0x32b>
+     3d6:	0f 2e       	mov	r0, r31
+     3d8:	f0 e9       	ldi	r31, 0x90	; 144
+     3da:	cf 2e       	mov	r12, r31
+     3dc:	f1 e0       	ldi	r31, 0x01	; 1
+     3de:	df 2e       	mov	r13, r31
+     3e0:	f0 2d       	mov	r31, r0
+     3e2:	19 e1       	ldi	r17, 0x19	; 25
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     3e4:	0f 2e       	mov	r0, r31
+     3e6:	f0 e7       	ldi	r31, 0x70	; 112
+     3e8:	8f 2e       	mov	r8, r31
+     3ea:	f1 e0       	ldi	r31, 0x01	; 1
+     3ec:	9f 2e       	mov	r9, r31
+     3ee:	f0 2d       	mov	r31, r0
+     3f0:	ce 01       	movw	r24, r28
+     3f2:	01 96       	adiw	r24, 0x01	; 1
+     3f4:	5c 01       	movw	r10, r24
+	}
+	
+	//if primary Index == 2
+	if(primaryIndex == 2){
+		for(i = 25; i <= 33; i += 4){
+			OCR0A = i;
+     3f6:	17 bd       	out	0x27, r17	; 39
+     3f8:	9f e3       	ldi	r25, 0x3F	; 63
+     3fa:	e2 e4       	ldi	r30, 0x42	; 66
+     3fc:	ff e0       	ldi	r31, 0x0F	; 15
+     3fe:	91 50       	subi	r25, 0x01	; 1
+     400:	e0 40       	sbci	r30, 0x00	; 0
+     402:	f0 40       	sbci	r31, 0x00	; 0
+     404:	e1 f7       	brne	.-8      	; 0x3fe <LocalSweep+0x152>
+     406:	00 c0       	rjmp	.+0      	; 0x408 <__LOCK_REGION_LENGTH__+0x8>
+     408:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     40a:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     40e:	78 2e       	mov	r7, r24
+     410:	09 2f       	mov	r16, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     412:	9f 93       	push	r25
+     414:	8f 93       	push	r24
+     416:	9f 92       	push	r9
+     418:	8f 92       	push	r8
+     41a:	bf 92       	push	r11
+     41c:	af 92       	push	r10
+     41e:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     422:	c5 01       	movw	r24, r10
+     424:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     428:	f6 01       	movw	r30, r12
+     42a:	70 82       	st	Z, r7
+     42c:	01 83       	std	Z+1, r16	; 0x01
+     42e:	f2 e0       	ldi	r31, 0x02	; 2
+     430:	cf 0e       	add	r12, r31
+     432:	d1 1c       	adc	r13, r1
+     434:	1c 5f       	subi	r17, 0xFC	; 252
+		}
+	}
+	
+	//if primary Index == 2
+	if(primaryIndex == 2){
+		for(i = 25; i <= 33; i += 4){
+     436:	0f 90       	pop	r0
+     438:	0f 90       	pop	r0
+     43a:	0f 90       	pop	r0
+     43c:	0f 90       	pop	r0
+     43e:	0f 90       	pop	r0
+     440:	0f 90       	pop	r0
+     442:	15 32       	cpi	r17, 0x25	; 37
+     444:	c1 f6       	brne	.-80     	; 0x3f6 <LocalSweep+0x14a>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     446:	03 e0       	ldi	r16, 0x03	; 3
+     448:	10 e0       	ldi	r17, 0x00	; 0
+     44a:	c8 c0       	rjmp	.+400    	; 0x5dc <__stack+0xdd>
+     44c:	0f 2e       	mov	r0, r31
+     44e:	f0 e9       	ldi	r31, 0x90	; 144
+     450:	cf 2e       	mov	r12, r31
+     452:	f1 e0       	ldi	r31, 0x01	; 1
+     454:	df 2e       	mov	r13, r31
+     456:	f0 2d       	mov	r31, r0
+		}
+	}
+	
+	//if primary Index == 3
+	if(primaryIndex == 3){
+     458:	10 e2       	ldi	r17, 0x20	; 32
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     45a:	0f 2e       	mov	r0, r31
+     45c:	f0 e7       	ldi	r31, 0x70	; 112
+     45e:	8f 2e       	mov	r8, r31
+     460:	f1 e0       	ldi	r31, 0x01	; 1
+     462:	9f 2e       	mov	r9, r31
+     464:	f0 2d       	mov	r31, r0
+     466:	9e 01       	movw	r18, r28
+     468:	2f 5f       	subi	r18, 0xFF	; 255
+     46a:	3f 4f       	sbci	r19, 0xFF	; 255
+     46c:	59 01       	movw	r10, r18
+	}
+	
+	//if primary Index == 3
+	if(primaryIndex == 3){
+		for(i = 32; i <= 40; i += 4){
+			OCR0A = i;
+     46e:	17 bd       	out	0x27, r17	; 39
+     470:	3f e3       	ldi	r19, 0x3F	; 63
+     472:	82 e4       	ldi	r24, 0x42	; 66
+     474:	9f e0       	ldi	r25, 0x0F	; 15
+     476:	31 50       	subi	r19, 0x01	; 1
+     478:	80 40       	sbci	r24, 0x00	; 0
+     47a:	90 40       	sbci	r25, 0x00	; 0
+     47c:	e1 f7       	brne	.-8      	; 0x476 <__LOCK_REGION_LENGTH__+0x76>
+     47e:	00 c0       	rjmp	.+0      	; 0x480 <__LOCK_REGION_LENGTH__+0x80>
+     480:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     482:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     486:	78 2e       	mov	r7, r24
+     488:	09 2f       	mov	r16, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     48a:	9f 93       	push	r25
+     48c:	8f 93       	push	r24
+     48e:	9f 92       	push	r9
+     490:	8f 92       	push	r8
+     492:	bf 92       	push	r11
+     494:	af 92       	push	r10
+     496:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     49a:	c5 01       	movw	r24, r10
+     49c:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     4a0:	f6 01       	movw	r30, r12
+     4a2:	70 82       	st	Z, r7
+     4a4:	01 83       	std	Z+1, r16	; 0x01
+     4a6:	f2 e0       	ldi	r31, 0x02	; 2
+     4a8:	cf 0e       	add	r12, r31
+     4aa:	d1 1c       	adc	r13, r1
+     4ac:	1c 5f       	subi	r17, 0xFC	; 252
+		}
+	}
+	
+	//if primary Index == 3
+	if(primaryIndex == 3){
+		for(i = 32; i <= 40; i += 4){
+     4ae:	0f 90       	pop	r0
+     4b0:	0f 90       	pop	r0
+     4b2:	0f 90       	pop	r0
+     4b4:	0f 90       	pop	r0
+     4b6:	0f 90       	pop	r0
+     4b8:	0f 90       	pop	r0
+     4ba:	1c 32       	cpi	r17, 0x2C	; 44
+     4bc:	c1 f6       	brne	.-80     	; 0x46e <__LOCK_REGION_LENGTH__+0x6e>
+     4be:	45 c0       	rjmp	.+138    	; 0x54a <__stack+0x4b>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 4
+	if(primaryIndex == 4){
+     4c0:	24 e0       	ldi	r18, 0x04	; 4
+     4c2:	e2 16       	cp	r14, r18
+     4c4:	f1 04       	cpc	r15, r1
+     4c6:	09 f0       	breq	.+2      	; 0x4ca <__LOCK_REGION_LENGTH__+0xca>
+     4c8:	b8 c1       	rjmp	.+880    	; 0x83a <__stack+0x33b>
+     4ca:	c8 01       	movw	r24, r16
+     4cc:	88 0f       	add	r24, r24
+     4ce:	99 1f       	adc	r25, r25
+     4d0:	fc 01       	movw	r30, r24
+     4d2:	e0 57       	subi	r30, 0x70	; 112
+     4d4:	fe 4f       	sbci	r31, 0xFE	; 254
+     4d6:	6f 01       	movw	r12, r30
+     4d8:	0f 2e       	mov	r0, r31
+     4da:	f6 e2       	ldi	r31, 0x26	; 38
+     4dc:	7f 2e       	mov	r7, r31
+     4de:	f0 2d       	mov	r31, r0
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     4e0:	0f 2e       	mov	r0, r31
+     4e2:	f0 e7       	ldi	r31, 0x70	; 112
+     4e4:	8f 2e       	mov	r8, r31
+     4e6:	f1 e0       	ldi	r31, 0x01	; 1
+     4e8:	9f 2e       	mov	r9, r31
+     4ea:	f0 2d       	mov	r31, r0
+     4ec:	9e 01       	movw	r18, r28
+     4ee:	2f 5f       	subi	r18, 0xFF	; 255
+     4f0:	3f 4f       	sbci	r19, 0xFF	; 255
+     4f2:	59 01       	movw	r10, r18
+	}
+	
+	//if primary Index == 4
+	if(primaryIndex == 4){
+		for(i = 38; i <= 46; i += 4){
+			OCR0A = i;
+     4f4:	77 bc       	out	0x27, r7	; 39
+     4f6:	3f e3       	ldi	r19, 0x3F	; 63
+     4f8:	82 e4       	ldi	r24, 0x42	; 66
+     4fa:	9f e0       	ldi	r25, 0x0F	; 15
+     4fc:	31 50       	subi	r19, 0x01	; 1
+     4fe:	80 40       	sbci	r24, 0x00	; 0
+     500:	90 40       	sbci	r25, 0x00	; 0
+     502:	e1 f7       	brne	.-8      	; 0x4fc <__LOCK_REGION_LENGTH__+0xfc>
+     504:	00 c0       	rjmp	.+0      	; 0x506 <__stack+0x7>
+     506:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     508:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     50c:	58 2e       	mov	r5, r24
+     50e:	69 2e       	mov	r6, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     510:	9f 93       	push	r25
+     512:	8f 93       	push	r24
+     514:	9f 92       	push	r9
+     516:	8f 92       	push	r8
+     518:	bf 92       	push	r11
+     51a:	af 92       	push	r10
+     51c:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     520:	c5 01       	movw	r24, r10
+     522:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     526:	f6 01       	movw	r30, r12
+     528:	50 82       	st	Z, r5
+     52a:	61 82       	std	Z+1, r6	; 0x01
+     52c:	f2 e0       	ldi	r31, 0x02	; 2
+     52e:	cf 0e       	add	r12, r31
+     530:	d1 1c       	adc	r13, r1
+     532:	24 e0       	ldi	r18, 0x04	; 4
+     534:	72 0e       	add	r7, r18
+		}
+	}
+	
+	//if primary Index == 4
+	if(primaryIndex == 4){
+		for(i = 38; i <= 46; i += 4){
+     536:	0f 90       	pop	r0
+     538:	0f 90       	pop	r0
+     53a:	0f 90       	pop	r0
+     53c:	0f 90       	pop	r0
+     53e:	0f 90       	pop	r0
+     540:	0f 90       	pop	r0
+     542:	32 e3       	ldi	r19, 0x32	; 50
+     544:	73 12       	cpse	r7, r19
+     546:	d6 cf       	rjmp	.-84     	; 0x4f4 <__LOCK_REGION_LENGTH__+0xf4>
+     548:	47 c0       	rjmp	.+142    	; 0x5d8 <__stack+0xd9>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 5
+	if(primaryIndex == 5){
+     54a:	85 e0       	ldi	r24, 0x05	; 5
+     54c:	e8 16       	cp	r14, r24
+     54e:	f1 04       	cpc	r15, r1
+     550:	09 f0       	breq	.+2      	; 0x554 <__stack+0x55>
+     552:	79 c1       	rjmp	.+754    	; 0x846 <__stack+0x347>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     554:	03 e0       	ldi	r16, 0x03	; 3
+     556:	10 e0       	ldi	r17, 0x00	; 0
+     558:	c8 01       	movw	r24, r16
+     55a:	88 0f       	add	r24, r24
+     55c:	99 1f       	adc	r25, r25
+     55e:	fc 01       	movw	r30, r24
+     560:	e0 57       	subi	r30, 0x70	; 112
+     562:	fe 4f       	sbci	r31, 0xFE	; 254
+     564:	6f 01       	movw	r12, r30
+     566:	0f 2e       	mov	r0, r31
+     568:	fd e2       	ldi	r31, 0x2D	; 45
+     56a:	7f 2e       	mov	r7, r31
+     56c:	f0 2d       	mov	r31, r0
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     56e:	0f 2e       	mov	r0, r31
+     570:	f0 e7       	ldi	r31, 0x70	; 112
+     572:	8f 2e       	mov	r8, r31
+     574:	f1 e0       	ldi	r31, 0x01	; 1
+     576:	9f 2e       	mov	r9, r31
+     578:	f0 2d       	mov	r31, r0
+     57a:	9e 01       	movw	r18, r28
+     57c:	2f 5f       	subi	r18, 0xFF	; 255
+     57e:	3f 4f       	sbci	r19, 0xFF	; 255
+     580:	59 01       	movw	r10, r18
+	}
+	
+	//if primary Index == 5
+	if(primaryIndex == 5){
+		for(i = 45; i <= 53; i += 4){
+			OCR0A = i;
+     582:	77 bc       	out	0x27, r7	; 39
+     584:	3f e3       	ldi	r19, 0x3F	; 63
+     586:	82 e4       	ldi	r24, 0x42	; 66
+     588:	9f e0       	ldi	r25, 0x0F	; 15
+     58a:	31 50       	subi	r19, 0x01	; 1
+     58c:	80 40       	sbci	r24, 0x00	; 0
+     58e:	90 40       	sbci	r25, 0x00	; 0
+     590:	e1 f7       	brne	.-8      	; 0x58a <__stack+0x8b>
+     592:	00 c0       	rjmp	.+0      	; 0x594 <__stack+0x95>
+     594:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     596:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     59a:	58 2e       	mov	r5, r24
+     59c:	69 2e       	mov	r6, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     59e:	9f 93       	push	r25
+     5a0:	8f 93       	push	r24
+     5a2:	9f 92       	push	r9
+     5a4:	8f 92       	push	r8
+     5a6:	bf 92       	push	r11
+     5a8:	af 92       	push	r10
+     5aa:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     5ae:	c5 01       	movw	r24, r10
+     5b0:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     5b4:	f6 01       	movw	r30, r12
+     5b6:	50 82       	st	Z, r5
+     5b8:	61 82       	std	Z+1, r6	; 0x01
+     5ba:	f2 e0       	ldi	r31, 0x02	; 2
+     5bc:	cf 0e       	add	r12, r31
+     5be:	d1 1c       	adc	r13, r1
+     5c0:	24 e0       	ldi	r18, 0x04	; 4
+     5c2:	72 0e       	add	r7, r18
+		}
+	}
+	
+	//if primary Index == 5
+	if(primaryIndex == 5){
+		for(i = 45; i <= 53; i += 4){
+     5c4:	0f 90       	pop	r0
+     5c6:	0f 90       	pop	r0
+     5c8:	0f 90       	pop	r0
+     5ca:	0f 90       	pop	r0
+     5cc:	0f 90       	pop	r0
+     5ce:	0f 90       	pop	r0
+     5d0:	39 e3       	ldi	r19, 0x39	; 57
+     5d2:	73 12       	cpse	r7, r19
+     5d4:	d6 cf       	rjmp	.-84     	; 0x582 <__stack+0x83>
+     5d6:	4a c0       	rjmp	.+148    	; 0x66c <__stack+0x16d>
+     5d8:	0d 5f       	subi	r16, 0xFD	; 253
+     5da:	1f 4f       	sbci	r17, 0xFF	; 255
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 6
+	if(primaryIndex == 6){
+     5dc:	86 e0       	ldi	r24, 0x06	; 6
+     5de:	e8 16       	cp	r14, r24
+     5e0:	f1 04       	cpc	r15, r1
+     5e2:	09 f0       	breq	.+2      	; 0x5e6 <__stack+0xe7>
+     5e4:	38 c1       	rjmp	.+624    	; 0x856 <__stack+0x357>
+     5e6:	02 c0       	rjmp	.+4      	; 0x5ec <__stack+0xed>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     5e8:	03 e0       	ldi	r16, 0x03	; 3
+     5ea:	10 e0       	ldi	r17, 0x00	; 0
+     5ec:	c8 01       	movw	r24, r16
+     5ee:	88 0f       	add	r24, r24
+     5f0:	99 1f       	adc	r25, r25
+     5f2:	fc 01       	movw	r30, r24
+     5f4:	e0 57       	subi	r30, 0x70	; 112
+     5f6:	fe 4f       	sbci	r31, 0xFE	; 254
+     5f8:	6f 01       	movw	r12, r30
+     5fa:	0f 2e       	mov	r0, r31
+     5fc:	f4 e3       	ldi	r31, 0x34	; 52
+     5fe:	7f 2e       	mov	r7, r31
+     600:	f0 2d       	mov	r31, r0
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     602:	0f 2e       	mov	r0, r31
+     604:	f0 e7       	ldi	r31, 0x70	; 112
+     606:	8f 2e       	mov	r8, r31
+     608:	f1 e0       	ldi	r31, 0x01	; 1
+     60a:	9f 2e       	mov	r9, r31
+     60c:	f0 2d       	mov	r31, r0
+     60e:	9e 01       	movw	r18, r28
+     610:	2f 5f       	subi	r18, 0xFF	; 255
+     612:	3f 4f       	sbci	r19, 0xFF	; 255
+     614:	59 01       	movw	r10, r18
+	}
+	
+	//if primary Index == 6
+	if(primaryIndex == 6){
+		for(i = 52; i <= 60; i += 4){
+			OCR0A = i;
+     616:	77 bc       	out	0x27, r7	; 39
+     618:	3f e3       	ldi	r19, 0x3F	; 63
+     61a:	82 e4       	ldi	r24, 0x42	; 66
+     61c:	9f e0       	ldi	r25, 0x0F	; 15
+     61e:	31 50       	subi	r19, 0x01	; 1
+     620:	80 40       	sbci	r24, 0x00	; 0
+     622:	90 40       	sbci	r25, 0x00	; 0
+     624:	e1 f7       	brne	.-8      	; 0x61e <__stack+0x11f>
+     626:	00 c0       	rjmp	.+0      	; 0x628 <__stack+0x129>
+     628:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     62a:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     62e:	58 2e       	mov	r5, r24
+     630:	69 2e       	mov	r6, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     632:	9f 93       	push	r25
+     634:	8f 93       	push	r24
+     636:	9f 92       	push	r9
+     638:	8f 92       	push	r8
+     63a:	bf 92       	push	r11
+     63c:	af 92       	push	r10
+     63e:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     642:	c5 01       	movw	r24, r10
+     644:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     648:	f6 01       	movw	r30, r12
+     64a:	50 82       	st	Z, r5
+     64c:	61 82       	std	Z+1, r6	; 0x01
+     64e:	f2 e0       	ldi	r31, 0x02	; 2
+     650:	cf 0e       	add	r12, r31
+     652:	d1 1c       	adc	r13, r1
+     654:	24 e0       	ldi	r18, 0x04	; 4
+     656:	72 0e       	add	r7, r18
+		}
+	}
+	
+	//if primary Index == 6
+	if(primaryIndex == 6){
+		for(i = 52; i <= 60; i += 4){
+     658:	0f 90       	pop	r0
+     65a:	0f 90       	pop	r0
+     65c:	0f 90       	pop	r0
+     65e:	0f 90       	pop	r0
+     660:	0f 90       	pop	r0
+     662:	0f 90       	pop	r0
+     664:	30 e4       	ldi	r19, 0x40	; 64
+     666:	73 12       	cpse	r7, r19
+     668:	d6 cf       	rjmp	.-84     	; 0x616 <__stack+0x117>
+     66a:	47 c0       	rjmp	.+142    	; 0x6fa <__stack+0x1fb>
+     66c:	0d 5f       	subi	r16, 0xFD	; 253
+     66e:	1f 4f       	sbci	r17, 0xFF	; 255
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 7
+	if(primaryIndex == 7){
+     670:	87 e0       	ldi	r24, 0x07	; 7
+     672:	e8 16       	cp	r14, r24
+     674:	f1 04       	cpc	r15, r1
+     676:	09 f0       	breq	.+2      	; 0x67a <__stack+0x17b>
+     678:	f4 c0       	rjmp	.+488    	; 0x862 <__stack+0x363>
+     67a:	c8 01       	movw	r24, r16
+     67c:	88 0f       	add	r24, r24
+     67e:	99 1f       	adc	r25, r25
+     680:	fc 01       	movw	r30, r24
+     682:	e0 57       	subi	r30, 0x70	; 112
+     684:	fe 4f       	sbci	r31, 0xFE	; 254
+     686:	6f 01       	movw	r12, r30
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     688:	0f 2e       	mov	r0, r31
+     68a:	fb e3       	ldi	r31, 0x3B	; 59
+     68c:	7f 2e       	mov	r7, r31
+     68e:	f0 2d       	mov	r31, r0
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     690:	0f 2e       	mov	r0, r31
+     692:	f0 e7       	ldi	r31, 0x70	; 112
+     694:	8f 2e       	mov	r8, r31
+     696:	f1 e0       	ldi	r31, 0x01	; 1
+     698:	9f 2e       	mov	r9, r31
+     69a:	f0 2d       	mov	r31, r0
+     69c:	9e 01       	movw	r18, r28
+     69e:	2f 5f       	subi	r18, 0xFF	; 255
+     6a0:	3f 4f       	sbci	r19, 0xFF	; 255
+     6a2:	59 01       	movw	r10, r18
+	}
+	
+	//if primary Index == 7
+	if(primaryIndex == 7){
+		for(i = 59; i <= 67; i += 4){
+			OCR0A = i;
+     6a4:	77 bc       	out	0x27, r7	; 39
+     6a6:	3f e3       	ldi	r19, 0x3F	; 63
+     6a8:	82 e4       	ldi	r24, 0x42	; 66
+     6aa:	9f e0       	ldi	r25, 0x0F	; 15
+     6ac:	31 50       	subi	r19, 0x01	; 1
+     6ae:	80 40       	sbci	r24, 0x00	; 0
+     6b0:	90 40       	sbci	r25, 0x00	; 0
+     6b2:	e1 f7       	brne	.-8      	; 0x6ac <__stack+0x1ad>
+     6b4:	00 c0       	rjmp	.+0      	; 0x6b6 <__stack+0x1b7>
+     6b6:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     6b8:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     6bc:	58 2e       	mov	r5, r24
+     6be:	69 2e       	mov	r6, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     6c0:	9f 93       	push	r25
+     6c2:	8f 93       	push	r24
+     6c4:	9f 92       	push	r9
+     6c6:	8f 92       	push	r8
+     6c8:	bf 92       	push	r11
+     6ca:	af 92       	push	r10
+     6cc:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     6d0:	c5 01       	movw	r24, r10
+     6d2:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     6d6:	f6 01       	movw	r30, r12
+     6d8:	50 82       	st	Z, r5
+     6da:	61 82       	std	Z+1, r6	; 0x01
+     6dc:	f2 e0       	ldi	r31, 0x02	; 2
+     6de:	cf 0e       	add	r12, r31
+     6e0:	d1 1c       	adc	r13, r1
+     6e2:	24 e0       	ldi	r18, 0x04	; 4
+     6e4:	72 0e       	add	r7, r18
+		}
+	}
+	
+	//if primary Index == 7
+	if(primaryIndex == 7){
+		for(i = 59; i <= 67; i += 4){
+     6e6:	0f 90       	pop	r0
+     6e8:	0f 90       	pop	r0
+     6ea:	0f 90       	pop	r0
+     6ec:	0f 90       	pop	r0
+     6ee:	0f 90       	pop	r0
+     6f0:	0f 90       	pop	r0
+     6f2:	37 e4       	ldi	r19, 0x47	; 71
+     6f4:	73 12       	cpse	r7, r19
+     6f6:	d6 cf       	rjmp	.-84     	; 0x6a4 <__stack+0x1a5>
+     6f8:	42 c0       	rjmp	.+132    	; 0x77e <__stack+0x27f>
+     6fa:	0d 5f       	subi	r16, 0xFD	; 253
+     6fc:	1f 4f       	sbci	r17, 0xFF	; 255
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+		}
+	}
+	//if primary Index == 8
+	if(primaryIndex == 8){
+     6fe:	88 e0       	ldi	r24, 0x08	; 8
+     700:	e8 16       	cp	r14, r24
+     702:	f1 04       	cpc	r15, r1
+     704:	09 f0       	breq	.+2      	; 0x708 <__stack+0x209>
+     706:	b3 c0       	rjmp	.+358    	; 0x86e <__stack+0x36f>
+     708:	00 0f       	add	r16, r16
+     70a:	11 1f       	adc	r17, r17
+     70c:	00 57       	subi	r16, 0x70	; 112
+     70e:	1e 4f       	sbci	r17, 0xFE	; 254
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     710:	0f 2e       	mov	r0, r31
+     712:	f2 e4       	ldi	r31, 0x42	; 66
+     714:	ff 2e       	mov	r15, r31
+     716:	f0 2d       	mov	r31, r0
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     718:	0f 2e       	mov	r0, r31
+     71a:	f0 e7       	ldi	r31, 0x70	; 112
+     71c:	8f 2e       	mov	r8, r31
+     71e:	f1 e0       	ldi	r31, 0x01	; 1
+     720:	9f 2e       	mov	r9, r31
+     722:	f0 2d       	mov	r31, r0
+     724:	fe 01       	movw	r30, r28
+     726:	31 96       	adiw	r30, 0x01	; 1
+     728:	5f 01       	movw	r10, r30
+		}
+	}
+	//if primary Index == 8
+	if(primaryIndex == 8){
+		for(i = 66; i <= 74; i += 4){
+			OCR0A = i;
+     72a:	f7 bc       	out	0x27, r15	; 39
+     72c:	ff e3       	ldi	r31, 0x3F	; 63
+     72e:	22 e4       	ldi	r18, 0x42	; 66
+     730:	3f e0       	ldi	r19, 0x0F	; 15
+     732:	f1 50       	subi	r31, 0x01	; 1
+     734:	20 40       	sbci	r18, 0x00	; 0
+     736:	30 40       	sbci	r19, 0x00	; 0
+     738:	e1 f7       	brne	.-8      	; 0x732 <__stack+0x233>
+     73a:	00 c0       	rjmp	.+0      	; 0x73c <__stack+0x23d>
+     73c:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     73e:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     742:	d8 2e       	mov	r13, r24
+     744:	e9 2e       	mov	r14, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     746:	9f 93       	push	r25
+     748:	8f 93       	push	r24
+     74a:	9f 92       	push	r9
+     74c:	8f 92       	push	r8
+     74e:	bf 92       	push	r11
+     750:	af 92       	push	r10
+     752:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     756:	c5 01       	movw	r24, r10
+     758:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     75c:	f8 01       	movw	r30, r16
+     75e:	d0 82       	st	Z, r13
+     760:	e1 82       	std	Z+1, r14	; 0x01
+     762:	0e 5f       	subi	r16, 0xFE	; 254
+     764:	1f 4f       	sbci	r17, 0xFF	; 255
+     766:	f4 e0       	ldi	r31, 0x04	; 4
+     768:	ff 0e       	add	r15, r31
+			arrayIndex++;
+		}
+	}
+	//if primary Index == 8
+	if(primaryIndex == 8){
+		for(i = 66; i <= 74; i += 4){
+     76a:	0f 90       	pop	r0
+     76c:	0f 90       	pop	r0
+     76e:	0f 90       	pop	r0
+     770:	0f 90       	pop	r0
+     772:	0f 90       	pop	r0
+     774:	0f 90       	pop	r0
+     776:	2e e4       	ldi	r18, 0x4E	; 78
+     778:	f2 12       	cpse	r15, r18
+     77a:	d7 cf       	rjmp	.-82     	; 0x72a <__stack+0x22b>
+     77c:	7d c0       	rjmp	.+250    	; 0x878 <__stack+0x379>
+     77e:	0d 5f       	subi	r16, 0xFD	; 253
+     780:	1f 4f       	sbci	r17, 0xFF	; 255
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 9
+	if(primaryIndex == 9){
+     782:	39 e0       	ldi	r19, 0x09	; 9
+     784:	e3 16       	cp	r14, r19
+     786:	f1 04       	cpc	r15, r1
+     788:	09 f0       	breq	.+2      	; 0x78c <__stack+0x28d>
+     78a:	76 c0       	rjmp	.+236    	; 0x878 <__stack+0x379>
+     78c:	00 0f       	add	r16, r16
+     78e:	11 1f       	adc	r17, r17
+     790:	00 57       	subi	r16, 0x70	; 112
+     792:	1e 4f       	sbci	r17, 0xFE	; 254
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     794:	0f 2e       	mov	r0, r31
+     796:	f9 e4       	ldi	r31, 0x49	; 73
+     798:	ff 2e       	mov	r15, r31
+     79a:	f0 2d       	mov	r31, r0
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     79c:	0f 2e       	mov	r0, r31
+     79e:	f0 e7       	ldi	r31, 0x70	; 112
+     7a0:	8f 2e       	mov	r8, r31
+     7a2:	f1 e0       	ldi	r31, 0x01	; 1
+     7a4:	9f 2e       	mov	r9, r31
+     7a6:	f0 2d       	mov	r31, r0
+     7a8:	ce 01       	movw	r24, r28
+     7aa:	01 96       	adiw	r24, 0x01	; 1
+     7ac:	5c 01       	movw	r10, r24
+	}
+	
+	//if primary Index == 9
+	if(primaryIndex == 9){
+		for(i = 73; i <= 77; i += 4){
+			OCR0A = i;
+     7ae:	f7 bc       	out	0x27, r15	; 39
+     7b0:	9f e3       	ldi	r25, 0x3F	; 63
+     7b2:	e2 e4       	ldi	r30, 0x42	; 66
+     7b4:	ff e0       	ldi	r31, 0x0F	; 15
+     7b6:	91 50       	subi	r25, 0x01	; 1
+     7b8:	e0 40       	sbci	r30, 0x00	; 0
+     7ba:	f0 40       	sbci	r31, 0x00	; 0
+     7bc:	e1 f7       	brne	.-8      	; 0x7b6 <__stack+0x2b7>
+     7be:	00 c0       	rjmp	.+0      	; 0x7c0 <__stack+0x2c1>
+     7c0:	00 00       	nop
+			_delay_ms(5000);
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+     7c2:	0e 94 65 00 	call	0xca	; 0xca <ADCAquire>
+     7c6:	d8 2e       	mov	r13, r24
+     7c8:	e9 2e       	mov	r14, r25
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     7ca:	9f 93       	push	r25
+     7cc:	8f 93       	push	r24
+     7ce:	9f 92       	push	r9
+     7d0:	8f 92       	push	r8
+     7d2:	bf 92       	push	r11
+     7d4:	af 92       	push	r10
+     7d6:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+     7da:	c5 01       	movw	r24, r10
+     7dc:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+     7e0:	f8 01       	movw	r30, r16
+     7e2:	d0 82       	st	Z, r13
+     7e4:	e1 82       	std	Z+1, r14	; 0x01
+     7e6:	0e 5f       	subi	r16, 0xFE	; 254
+     7e8:	1f 4f       	sbci	r17, 0xFF	; 255
+     7ea:	f4 e0       	ldi	r31, 0x04	; 4
+     7ec:	ff 0e       	add	r15, r31
+		}
+	}
+	
+	//if primary Index == 9
+	if(primaryIndex == 9){
+		for(i = 73; i <= 77; i += 4){
+     7ee:	0f 90       	pop	r0
+     7f0:	0f 90       	pop	r0
+     7f2:	0f 90       	pop	r0
+     7f4:	0f 90       	pop	r0
+     7f6:	0f 90       	pop	r0
+     7f8:	0f 90       	pop	r0
+     7fa:	21 e5       	ldi	r18, 0x51	; 81
+     7fc:	f2 12       	cpse	r15, r18
+     7fe:	d7 cf       	rjmp	.-82     	; 0x7ae <__stack+0x2af>
+     800:	3b c0       	rjmp	.+118    	; 0x878 <__stack+0x379>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 1
+	if(primaryIndex == 1){
+     802:	01 97       	sbiw	r24, 0x01	; 1
+     804:	09 f0       	breq	.+2      	; 0x808 <__stack+0x309>
+     806:	e2 cd       	rjmp	.-1084   	; 0x3cc <LocalSweep+0x120>
+     808:	0f 2e       	mov	r0, r31
+     80a:	f0 e9       	ldi	r31, 0x90	; 144
+     80c:	cf 2e       	mov	r12, r31
+     80e:	f1 e0       	ldi	r31, 0x01	; 1
+     810:	df 2e       	mov	r13, r31
+     812:	f0 2d       	mov	r31, r0
+     814:	12 e1       	ldi	r17, 0x12	; 18
+			
+			//Get ADC value
+			tempADC = ADCAquire();
+			
+			//Convert that int to char
+			sprintf(tempADCChar, "%d", tempADC);
+     816:	0f 2e       	mov	r0, r31
+     818:	f0 e7       	ldi	r31, 0x70	; 112
+     81a:	8f 2e       	mov	r8, r31
+     81c:	f1 e0       	ldi	r31, 0x01	; 1
+     81e:	9f 2e       	mov	r9, r31
+     820:	f0 2d       	mov	r31, r0
+     822:	ce 01       	movw	r24, r28
+     824:	01 96       	adiw	r24, 0x01	; 1
+     826:	5c 01       	movw	r10, r24
+     828:	a6 cd       	rjmp	.-1204   	; 0x376 <LocalSweep+0xca>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 3
+	if(primaryIndex == 3){
+     82a:	93 e0       	ldi	r25, 0x03	; 3
+     82c:	e9 16       	cp	r14, r25
+     82e:	f1 04       	cpc	r15, r1
+     830:	09 f4       	brne	.+2      	; 0x834 <__stack+0x335>
+     832:	0c ce       	rjmp	.-1000   	; 0x44c <__LOCK_REGION_LENGTH__+0x4c>
+//Input: index of angle to start at
+//Return: n/a
+//Description: Performs local sweep at primary angle
+LocalSweep(int primaryIndex){
+	int i;
+	int arrayIndex = 0;
+     834:	00 e0       	ldi	r16, 0x00	; 0
+     836:	10 e0       	ldi	r17, 0x00	; 0
+     838:	43 ce       	rjmp	.-890    	; 0x4c0 <__LOCK_REGION_LENGTH__+0xc0>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 5
+	if(primaryIndex == 5){
+     83a:	e5 e0       	ldi	r30, 0x05	; 5
+     83c:	ee 16       	cp	r14, r30
+     83e:	f1 04       	cpc	r15, r1
+     840:	09 f4       	brne	.+2      	; 0x844 <__stack+0x345>
+     842:	8a ce       	rjmp	.-748    	; 0x558 <__stack+0x59>
+     844:	cb ce       	rjmp	.-618    	; 0x5dc <__stack+0xdd>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 6
+	if(primaryIndex == 6){
+     846:	f6 e0       	ldi	r31, 0x06	; 6
+     848:	ef 16       	cp	r14, r31
+     84a:	f1 04       	cpc	r15, r1
+     84c:	09 f4       	brne	.+2      	; 0x850 <__stack+0x351>
+     84e:	cc ce       	rjmp	.-616    	; 0x5e8 <__stack+0xe9>
+			
+			//Print ADC value
+			lcd_puts(tempADCChar);
+			
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+     850:	03 e0       	ldi	r16, 0x03	; 3
+     852:	10 e0       	ldi	r17, 0x00	; 0
+     854:	0d cf       	rjmp	.-486    	; 0x670 <__stack+0x171>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 7
+	if(primaryIndex == 7){
+     856:	27 e0       	ldi	r18, 0x07	; 7
+     858:	e2 16       	cp	r14, r18
+     85a:	f1 04       	cpc	r15, r1
+     85c:	09 f0       	breq	.+2      	; 0x860 <__stack+0x361>
+     85e:	4f cf       	rjmp	.-354    	; 0x6fe <__stack+0x1ff>
+     860:	0c cf       	rjmp	.-488    	; 0x67a <__stack+0x17b>
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+		}
+	}
+	//if primary Index == 8
+	if(primaryIndex == 8){
+     862:	38 e0       	ldi	r19, 0x08	; 8
+     864:	e3 16       	cp	r14, r19
+     866:	f1 04       	cpc	r15, r1
+     868:	09 f0       	breq	.+2      	; 0x86c <__stack+0x36d>
+     86a:	8b cf       	rjmp	.-234    	; 0x782 <__stack+0x283>
+     86c:	4d cf       	rjmp	.-358    	; 0x708 <__stack+0x209>
+			arrayIndex++;
+		}
+	}
+	
+	//if primary Index == 9
+	if(primaryIndex == 9){
+     86e:	89 e0       	ldi	r24, 0x09	; 9
+     870:	e8 16       	cp	r14, r24
+     872:	f1 04       	cpc	r15, r1
+     874:	09 f4       	brne	.+2      	; 0x878 <__stack+0x379>
+     876:	8a cf       	rjmp	.-236    	; 0x78c <__stack+0x28d>
+			ADCValuesLocal[arrayIndex] = tempADC;
+			arrayIndex++;
+		}
+	}
+	
+}
+     878:	80 e0       	ldi	r24, 0x00	; 0
+     87a:	90 e0       	ldi	r25, 0x00	; 0
+     87c:	26 96       	adiw	r28, 0x06	; 6
+     87e:	0f b6       	in	r0, 0x3f	; 63
+     880:	f8 94       	cli
+     882:	de bf       	out	0x3e, r29	; 62
+     884:	0f be       	out	0x3f, r0	; 63
+     886:	cd bf       	out	0x3d, r28	; 61
+     888:	df 91       	pop	r29
+     88a:	cf 91       	pop	r28
+     88c:	1f 91       	pop	r17
+     88e:	0f 91       	pop	r16
+     890:	ff 90       	pop	r15
+     892:	ef 90       	pop	r14
+     894:	df 90       	pop	r13
+     896:	cf 90       	pop	r12
+     898:	bf 90       	pop	r11
+     89a:	af 90       	pop	r10
+     89c:	9f 90       	pop	r9
+     89e:	8f 90       	pop	r8
+     8a0:	7f 90       	pop	r7
+     8a2:	6f 90       	pop	r6
+     8a4:	5f 90       	pop	r5
+     8a6:	08 95       	ret
+
+000008a8 <FindLowestADCLocal>:
+	int i;
+	int num = 1000;
+	int index;
+	
+	//If primary Index is 0
+	if(primaryIndex == 0){
+     8a8:	00 97       	sbiw	r24, 0x00	; 0
+     8aa:	a9 f5       	brne	.+106    	; 0x916 <FindLowestADCLocal+0x6e>
+		for(i = 1; i < 3; i++){
+			if (ADCValuesLocal[i] < num){
+     8ac:	80 91 92 01 	lds	r24, 0x0192	; 0x800192 <ADCValuesLocal+0x2>
+     8b0:	90 91 93 01 	lds	r25, 0x0193	; 0x800193 <ADCValuesLocal+0x3>
+     8b4:	88 3e       	cpi	r24, 0xE8	; 232
+     8b6:	23 e0       	ldi	r18, 0x03	; 3
+     8b8:	92 07       	cpc	r25, r18
+     8ba:	1c f4       	brge	.+6      	; 0x8c2 <FindLowestADCLocal+0x1a>
+     8bc:	41 e0       	ldi	r20, 0x01	; 1
+     8be:	50 e0       	ldi	r21, 0x00	; 0
+     8c0:	02 c0       	rjmp	.+4      	; 0x8c6 <FindLowestADCLocal+0x1e>
+     8c2:	88 ee       	ldi	r24, 0xE8	; 232
+     8c4:	93 e0       	ldi	r25, 0x03	; 3
+     8c6:	20 91 94 01 	lds	r18, 0x0194	; 0x800194 <ADCValuesLocal+0x4>
+     8ca:	30 91 95 01 	lds	r19, 0x0195	; 0x800195 <ADCValuesLocal+0x5>
+     8ce:	28 17       	cp	r18, r24
+     8d0:	39 07       	cpc	r19, r25
+     8d2:	0c f0       	brlt	.+2      	; 0x8d6 <FindLowestADCLocal+0x2e>
+     8d4:	49 c0       	rjmp	.+146    	; 0x968 <FindLowestADCLocal+0xc0>
+	int num = 1000;
+	int index;
+	
+	//If primary Index is 0
+	if(primaryIndex == 0){
+		for(i = 1; i < 3; i++){
+     8d6:	42 e0       	ldi	r20, 0x02	; 2
+     8d8:	50 e0       	ldi	r21, 0x00	; 0
+     8da:	46 c0       	rjmp	.+140    	; 0x968 <FindLowestADCLocal+0xc0>
+			}
+		}
+	}
+	
+	//If primary Index is 9
+	if(primaryIndex == 9){
+     8dc:	09 97       	sbiw	r24, 0x09	; 9
+     8de:	09 f0       	breq	.+2      	; 0x8e2 <FindLowestADCLocal+0x3a>
+     8e0:	43 c0       	rjmp	.+134    	; 0x968 <FindLowestADCLocal+0xc0>
+     8e2:	05 c0       	rjmp	.+10     	; 0x8ee <FindLowestADCLocal+0x46>
+     8e4:	09 97       	sbiw	r24, 0x09	; 9
+     8e6:	09 f0       	breq	.+2      	; 0x8ea <FindLowestADCLocal+0x42>
+     8e8:	3f c0       	rjmp	.+126    	; 0x968 <FindLowestADCLocal+0xc0>
+//Input: the primary Index of ADC values
+//Return: lowest ADC value's index
+//Description:returns the index of lowest local ADC
+int FindLowestADCLocal(int primaryIndex){
+	int i;
+	int num = 1000;
+     8ea:	28 ee       	ldi	r18, 0xE8	; 232
+     8ec:	33 e0       	ldi	r19, 0x03	; 3
+	}
+	
+	//If primary Index is 9
+	if(primaryIndex == 9){
+		for(i = 0; i < 2; i++){
+			if (ADCValuesLocal[i] < num){
+     8ee:	80 91 90 01 	lds	r24, 0x0190	; 0x800190 <ADCValuesLocal>
+     8f2:	90 91 91 01 	lds	r25, 0x0191	; 0x800191 <ADCValuesLocal+0x1>
+     8f6:	82 17       	cp	r24, r18
+     8f8:	93 07       	cpc	r25, r19
+     8fa:	1c f4       	brge	.+6      	; 0x902 <FindLowestADCLocal+0x5a>
+     8fc:	9c 01       	movw	r18, r24
+     8fe:	40 e0       	ldi	r20, 0x00	; 0
+     900:	50 e0       	ldi	r21, 0x00	; 0
+     902:	80 91 92 01 	lds	r24, 0x0192	; 0x800192 <ADCValuesLocal+0x2>
+     906:	90 91 93 01 	lds	r25, 0x0193	; 0x800193 <ADCValuesLocal+0x3>
+     90a:	82 17       	cp	r24, r18
+     90c:	93 07       	cpc	r25, r19
+     90e:	64 f5       	brge	.+88     	; 0x968 <FindLowestADCLocal+0xc0>
+		}
+	}
+	
+	//If primary Index is 9
+	if(primaryIndex == 9){
+		for(i = 0; i < 2; i++){
+     910:	41 e0       	ldi	r20, 0x01	; 1
+     912:	50 e0       	ldi	r21, 0x00	; 0
+			}
+		}
+	}
+	
+	//return index
+	return index;
+     914:	29 c0       	rjmp	.+82     	; 0x968 <FindLowestADCLocal+0xc0>
+			}
+		}
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+     916:	9c 01       	movw	r18, r24
+     918:	21 50       	subi	r18, 0x01	; 1
+     91a:	31 09       	sbc	r19, r1
+     91c:	28 30       	cpi	r18, 0x08	; 8
+     91e:	31 05       	cpc	r19, r1
+     920:	08 f7       	brcc	.-62     	; 0x8e4 <FindLowestADCLocal+0x3c>
+		for(i = 0; i < 3; i++){
+			if (ADCValuesLocal[i] < num){
+     922:	20 91 90 01 	lds	r18, 0x0190	; 0x800190 <ADCValuesLocal>
+     926:	30 91 91 01 	lds	r19, 0x0191	; 0x800191 <ADCValuesLocal+0x1>
+     92a:	28 3e       	cpi	r18, 0xE8	; 232
+     92c:	63 e0       	ldi	r22, 0x03	; 3
+     92e:	36 07       	cpc	r19, r22
+     930:	1c f4       	brge	.+6      	; 0x938 <FindLowestADCLocal+0x90>
+     932:	40 e0       	ldi	r20, 0x00	; 0
+     934:	50 e0       	ldi	r21, 0x00	; 0
+     936:	02 c0       	rjmp	.+4      	; 0x93c <FindLowestADCLocal+0x94>
+//Input: the primary Index of ADC values
+//Return: lowest ADC value's index
+//Description:returns the index of lowest local ADC
+int FindLowestADCLocal(int primaryIndex){
+	int i;
+	int num = 1000;
+     938:	28 ee       	ldi	r18, 0xE8	; 232
+     93a:	33 e0       	ldi	r19, 0x03	; 3
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+		for(i = 0; i < 3; i++){
+			if (ADCValuesLocal[i] < num){
+     93c:	60 91 92 01 	lds	r22, 0x0192	; 0x800192 <ADCValuesLocal+0x2>
+     940:	70 91 93 01 	lds	r23, 0x0193	; 0x800193 <ADCValuesLocal+0x3>
+     944:	62 17       	cp	r22, r18
+     946:	73 07       	cpc	r23, r19
+     948:	1c f4       	brge	.+6      	; 0x950 <FindLowestADCLocal+0xa8>
+     94a:	9b 01       	movw	r18, r22
+		}
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+		for(i = 0; i < 3; i++){
+     94c:	41 e0       	ldi	r20, 0x01	; 1
+     94e:	50 e0       	ldi	r21, 0x00	; 0
+			if (ADCValuesLocal[i] < num){
+     950:	60 91 94 01 	lds	r22, 0x0194	; 0x800194 <ADCValuesLocal+0x4>
+     954:	70 91 95 01 	lds	r23, 0x0195	; 0x800195 <ADCValuesLocal+0x5>
+     958:	62 17       	cp	r22, r18
+     95a:	73 07       	cpc	r23, r19
+     95c:	0c f0       	brlt	.+2      	; 0x960 <FindLowestADCLocal+0xb8>
+     95e:	be cf       	rjmp	.-132    	; 0x8dc <FindLowestADCLocal+0x34>
+     960:	9b 01       	movw	r18, r22
+		}
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+		for(i = 0; i < 3; i++){
+     962:	42 e0       	ldi	r20, 0x02	; 2
+     964:	50 e0       	ldi	r21, 0x00	; 0
+     966:	ba cf       	rjmp	.-140    	; 0x8dc <FindLowestADCLocal+0x34>
+	}
+	
+	//return index
+	return index;
+	
+}
+     968:	ca 01       	movw	r24, r20
+     96a:	08 95       	ret
+
+0000096c <FindHighestADCLocal>:
+	int i;
+	int num = 0;
+	int index;
+	
+	//If primary Index is 0
+	if(primaryIndex == 0){
+     96c:	00 97       	sbiw	r24, 0x00	; 0
+     96e:	99 f5       	brne	.+102    	; 0x9d6 <FindHighestADCLocal+0x6a>
+		for(i = 1; i < 3; i++){
+			if (ADCValuesLocal[i] > num){
+     970:	80 91 92 01 	lds	r24, 0x0192	; 0x800192 <ADCValuesLocal+0x2>
+     974:	90 91 93 01 	lds	r25, 0x0193	; 0x800193 <ADCValuesLocal+0x3>
+     978:	18 16       	cp	r1, r24
+     97a:	19 06       	cpc	r1, r25
+     97c:	1c f4       	brge	.+6      	; 0x984 <FindHighestADCLocal+0x18>
+     97e:	41 e0       	ldi	r20, 0x01	; 1
+     980:	50 e0       	ldi	r21, 0x00	; 0
+     982:	02 c0       	rjmp	.+4      	; 0x988 <FindHighestADCLocal+0x1c>
+     984:	80 e0       	ldi	r24, 0x00	; 0
+     986:	90 e0       	ldi	r25, 0x00	; 0
+     988:	20 91 94 01 	lds	r18, 0x0194	; 0x800194 <ADCValuesLocal+0x4>
+     98c:	30 91 95 01 	lds	r19, 0x0195	; 0x800195 <ADCValuesLocal+0x5>
+     990:	82 17       	cp	r24, r18
+     992:	93 07       	cpc	r25, r19
+     994:	0c f0       	brlt	.+2      	; 0x998 <FindHighestADCLocal+0x2c>
+     996:	46 c0       	rjmp	.+140    	; 0xa24 <FindHighestADCLocal+0xb8>
+	int num = 0;
+	int index;
+	
+	//If primary Index is 0
+	if(primaryIndex == 0){
+		for(i = 1; i < 3; i++){
+     998:	42 e0       	ldi	r20, 0x02	; 2
+     99a:	50 e0       	ldi	r21, 0x00	; 0
+     99c:	43 c0       	rjmp	.+134    	; 0xa24 <FindHighestADCLocal+0xb8>
+			}
+		}
+	}
+	
+	//If primary Index is 9
+	if(primaryIndex == 9){
+     99e:	09 97       	sbiw	r24, 0x09	; 9
+     9a0:	09 f0       	breq	.+2      	; 0x9a4 <FindHighestADCLocal+0x38>
+     9a2:	40 c0       	rjmp	.+128    	; 0xa24 <FindHighestADCLocal+0xb8>
+     9a4:	04 c0       	rjmp	.+8      	; 0x9ae <FindHighestADCLocal+0x42>
+     9a6:	09 97       	sbiw	r24, 0x09	; 9
+     9a8:	e9 f5       	brne	.+122    	; 0xa24 <FindHighestADCLocal+0xb8>
+//Input: the primary Index of ADC values
+//Return: lowest ADC value's index
+//Description:returns the index of lowest local ADC
+int FindHighestADCLocal(int primaryIndex){
+	int i;
+	int num = 0;
+     9aa:	20 e0       	ldi	r18, 0x00	; 0
+     9ac:	30 e0       	ldi	r19, 0x00	; 0
+	}
+	
+	//If primary Index is 9
+	if(primaryIndex == 9){
+		for(i = 0; i < 2; i++){
+			if (ADCValuesLocal[i] > num){
+     9ae:	80 91 90 01 	lds	r24, 0x0190	; 0x800190 <ADCValuesLocal>
+     9b2:	90 91 91 01 	lds	r25, 0x0191	; 0x800191 <ADCValuesLocal+0x1>
+     9b6:	28 17       	cp	r18, r24
+     9b8:	39 07       	cpc	r19, r25
+     9ba:	1c f4       	brge	.+6      	; 0x9c2 <FindHighestADCLocal+0x56>
+     9bc:	9c 01       	movw	r18, r24
+     9be:	40 e0       	ldi	r20, 0x00	; 0
+     9c0:	50 e0       	ldi	r21, 0x00	; 0
+     9c2:	80 91 92 01 	lds	r24, 0x0192	; 0x800192 <ADCValuesLocal+0x2>
+     9c6:	90 91 93 01 	lds	r25, 0x0193	; 0x800193 <ADCValuesLocal+0x3>
+     9ca:	28 17       	cp	r18, r24
+     9cc:	39 07       	cpc	r19, r25
+     9ce:	54 f5       	brge	.+84     	; 0xa24 <FindHighestADCLocal+0xb8>
+		}
+	}
+	
+	//If primary Index is 9
+	if(primaryIndex == 9){
+		for(i = 0; i < 2; i++){
+     9d0:	41 e0       	ldi	r20, 0x01	; 1
+     9d2:	50 e0       	ldi	r21, 0x00	; 0
+			}
+		}
+	}
+	
+	//return index
+	return index;
+     9d4:	27 c0       	rjmp	.+78     	; 0xa24 <FindHighestADCLocal+0xb8>
+			}
+		}
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+     9d6:	9c 01       	movw	r18, r24
+     9d8:	21 50       	subi	r18, 0x01	; 1
+     9da:	31 09       	sbc	r19, r1
+     9dc:	28 30       	cpi	r18, 0x08	; 8
+     9de:	31 05       	cpc	r19, r1
+     9e0:	10 f7       	brcc	.-60     	; 0x9a6 <FindHighestADCLocal+0x3a>
+		for(i = 0; i < 3; i++){
+			if (ADCValuesLocal[i] > num){
+     9e2:	20 91 90 01 	lds	r18, 0x0190	; 0x800190 <ADCValuesLocal>
+     9e6:	30 91 91 01 	lds	r19, 0x0191	; 0x800191 <ADCValuesLocal+0x1>
+     9ea:	12 16       	cp	r1, r18
+     9ec:	13 06       	cpc	r1, r19
+     9ee:	1c f4       	brge	.+6      	; 0x9f6 <FindHighestADCLocal+0x8a>
+     9f0:	40 e0       	ldi	r20, 0x00	; 0
+     9f2:	50 e0       	ldi	r21, 0x00	; 0
+     9f4:	02 c0       	rjmp	.+4      	; 0x9fa <FindHighestADCLocal+0x8e>
+//Input: the primary Index of ADC values
+//Return: lowest ADC value's index
+//Description:returns the index of lowest local ADC
+int FindHighestADCLocal(int primaryIndex){
+	int i;
+	int num = 0;
+     9f6:	20 e0       	ldi	r18, 0x00	; 0
+     9f8:	30 e0       	ldi	r19, 0x00	; 0
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+		for(i = 0; i < 3; i++){
+			if (ADCValuesLocal[i] > num){
+     9fa:	60 91 92 01 	lds	r22, 0x0192	; 0x800192 <ADCValuesLocal+0x2>
+     9fe:	70 91 93 01 	lds	r23, 0x0193	; 0x800193 <ADCValuesLocal+0x3>
+     a02:	26 17       	cp	r18, r22
+     a04:	37 07       	cpc	r19, r23
+     a06:	1c f4       	brge	.+6      	; 0xa0e <FindHighestADCLocal+0xa2>
+     a08:	9b 01       	movw	r18, r22
+		}
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+		for(i = 0; i < 3; i++){
+     a0a:	41 e0       	ldi	r20, 0x01	; 1
+     a0c:	50 e0       	ldi	r21, 0x00	; 0
+			if (ADCValuesLocal[i] > num){
+     a0e:	60 91 94 01 	lds	r22, 0x0194	; 0x800194 <ADCValuesLocal+0x4>
+     a12:	70 91 95 01 	lds	r23, 0x0195	; 0x800195 <ADCValuesLocal+0x5>
+     a16:	26 17       	cp	r18, r22
+     a18:	37 07       	cpc	r19, r23
+     a1a:	0c f6       	brge	.-126    	; 0x99e <FindHighestADCLocal+0x32>
+     a1c:	9b 01       	movw	r18, r22
+		}
+	}
+	
+	//If primaryIndex is 1-8
+	if(primaryIndex >= 1 && primaryIndex <= 8){
+		for(i = 0; i < 3; i++){
+     a1e:	42 e0       	ldi	r20, 0x02	; 2
+     a20:	50 e0       	ldi	r21, 0x00	; 0
+     a22:	bd cf       	rjmp	.-134    	; 0x99e <FindHighestADCLocal+0x32>
+		}
+	}
+	
+	//return index
+	return index;
+}
+     a24:	ca 01       	movw	r24, r20
+     a26:	08 95       	ret
+
+00000a28 <main>:
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+int main(void)
+{
+	InitializeServo();
+     a28:	0e 94 73 00 	call	0xe6	; 0xe6 <InitializeServo>
+	//Initial Servo Value
+	OCR0A = 15;
+     a2c:	8f e0       	ldi	r24, 0x0F	; 15
+     a2e:	87 bd       	out	0x27, r24	; 39
+	InitializeJoyStick();
+     a30:	0e 94 88 00 	call	0x110	; 0x110 <InitializeJoyStick>
+	InitializeLCD();
+     a34:	0e 94 91 00 	call	0x122	; 0x122 <InitializeLCD>
+	InitializeInterrupts();
+     a38:	0e 94 98 00 	call	0x130	; 0x130 <InitializeInterrupts>
+	ADCSetup();
+     a3c:	0e 94 4d 00 	call	0x9a	; 0x9a <ADCSetup>
+
+	//Initialize Modes
+	//Mode 0: FTL - Follow The Light
+	//Mode 1: ATL - Avoid The Light
+	mode = 0;
+     a40:	10 92 7b 01 	sts	0x017B, r1	; 0x80017b <mode+0x1>
+     a44:	10 92 7a 01 	sts	0x017A, r1	; 0x80017a <mode>
+     a48:	ff cf       	rjmp	.-2      	; 0xa48 <main+0x20>
+
+00000a4a <IndexToLocalAngle>:
+	if(ADCIndex == 0){
+		temp = -10;
+	}
+	
+	//If 0 deg
+	if(ADCIndex == 1){
+     a4a:	61 30       	cpi	r22, 0x01	; 1
+     a4c:	71 05       	cpc	r23, r1
+     a4e:	31 f0       	breq	.+12     	; 0xa5c <IndexToLocalAngle+0x12>
+		temp = 0;
+	}
+	
+	//If +10 deg
+	if(ADCIndex == 2){
+     a50:	62 30       	cpi	r22, 0x02	; 2
+     a52:	71 05       	cpc	r23, r1
+     a54:	31 f4       	brne	.+12     	; 0xa62 <IndexToLocalAngle+0x18>
+		temp = 10;
+     a56:	2a e0       	ldi	r18, 0x0A	; 10
+     a58:	30 e0       	ldi	r19, 0x00	; 0
+     a5a:	05 c0       	rjmp	.+10     	; 0xa66 <IndexToLocalAngle+0x1c>
+		temp = -10;
+	}
+	
+	//If 0 deg
+	if(ADCIndex == 1){
+		temp = 0;
+     a5c:	20 e0       	ldi	r18, 0x00	; 0
+     a5e:	30 e0       	ldi	r19, 0x00	; 0
+     a60:	02 c0       	rjmp	.+4      	; 0xa66 <IndexToLocalAngle+0x1c>
+     a62:	26 ef       	ldi	r18, 0xF6	; 246
+     a64:	3f ef       	ldi	r19, 0xFF	; 255
+		temp = 10;
+	}
+	
+	//return primary angle
+	return (primaryAngle + temp);
+}
+     a66:	82 0f       	add	r24, r18
+     a68:	93 1f       	adc	r25, r19
+     a6a:	08 95       	ret
+
+00000a6c <__vector_2>:
+
+//////////////////////////////////////////////////////////////////////
+//Input: Occurs when E3 toggles (RIGHT)
+//Return: n/a
+//Description: Performs appropriate mode (FTL or ATL).
+ISR(PCINT0_vect){
+     a6c:	1f 92       	push	r1
+     a6e:	0f 92       	push	r0
+     a70:	0f b6       	in	r0, 0x3f	; 63
+     a72:	0f 92       	push	r0
+     a74:	11 24       	eor	r1, r1
+     a76:	af 92       	push	r10
+     a78:	bf 92       	push	r11
+     a7a:	cf 92       	push	r12
+     a7c:	df 92       	push	r13
+     a7e:	ef 92       	push	r14
+     a80:	ff 92       	push	r15
+     a82:	0f 93       	push	r16
+     a84:	1f 93       	push	r17
+     a86:	2f 93       	push	r18
+     a88:	3f 93       	push	r19
+     a8a:	4f 93       	push	r20
+     a8c:	5f 93       	push	r21
+     a8e:	6f 93       	push	r22
+     a90:	7f 93       	push	r23
+     a92:	8f 93       	push	r24
+     a94:	9f 93       	push	r25
+     a96:	af 93       	push	r26
+     a98:	bf 93       	push	r27
+     a9a:	ef 93       	push	r30
+     a9c:	ff 93       	push	r31
+     a9e:	cf 93       	push	r28
+     aa0:	df 93       	push	r29
+     aa2:	cd b7       	in	r28, 0x3d	; 61
+     aa4:	de b7       	in	r29, 0x3e	; 62
+     aa6:	2c 97       	sbiw	r28, 0x0c	; 12
+     aa8:	de bf       	out	0x3e, r29	; 62
+     aaa:	cd bf       	out	0x3d, r28	; 61
+	int ADCIndex;
+	int primaryIndex;
+	char primaryAngleChar[6];
+	char localAngleChar[6];
+	
+	isrCount++;
+     aac:	80 91 78 01 	lds	r24, 0x0178	; 0x800178 <__data_end>
+     ab0:	90 91 79 01 	lds	r25, 0x0179	; 0x800179 <__data_end+0x1>
+     ab4:	01 96       	adiw	r24, 0x01	; 1
+     ab6:	90 93 79 01 	sts	0x0179, r25	; 0x800179 <__data_end+0x1>
+     aba:	80 93 78 01 	sts	0x0178, r24	; 0x800178 <__data_end>
+	
+	//Every other ISR cal call this
+	if((isrCount % 2) == 0){
+     abe:	80 fd       	sbrc	r24, 0
+     ac0:	cc c0       	rjmp	.+408    	; 0xc5a <__vector_2+0x1ee>
+		//Call Full Sweep
+		FullSweep();
+     ac2:	0e 94 a9 00 	call	0x152	; 0x152 <FullSweep>
+		
+		//Test Print all the ADC[]
+		//printADCValues();
+		
+		//IF FTL find lowest ADC
+		if(mode == 0){
+     ac6:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <mode>
+     aca:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <mode+0x1>
+     ace:	89 2b       	or	r24, r25
+     ad0:	09 f0       	breq	.+2      	; 0xad4 <__vector_2+0x68>
+     ad2:	5e c0       	rjmp	.+188    	; 0xb90 <__vector_2+0x124>
+			primaryIndex = findLowestADC();
+     ad4:	0e 94 2e 01 	call	0x25c	; 0x25c <findLowestADC>
+     ad8:	6c 01       	movw	r12, r24
+
+//Input: index of array
+//Return: Angle
+//Description:converts index to angle of servo
+int IndexToAngle(int index){
+	int angle = index *20;
+     ada:	84 e1       	ldi	r24, 0x14	; 20
+     adc:	8c 9d       	mul	r24, r12
+     ade:	70 01       	movw	r14, r0
+     ae0:	8d 9d       	mul	r24, r13
+     ae2:	f0 0c       	add	r15, r0
+     ae4:	11 24       	eor	r1, r1
+			primaryIndex = findLowestADC();
+			primaryAngle = IndexToAngle(primaryIndex);
+			
+			//Print Primary Angle to screen
+	
+			sprintf(primaryAngleChar, "%d", primaryAngle);
+     ae6:	ff 92       	push	r15
+     ae8:	ef 92       	push	r14
+     aea:	00 e7       	ldi	r16, 0x70	; 112
+     aec:	11 e0       	ldi	r17, 0x01	; 1
+     aee:	1f 93       	push	r17
+     af0:	0f 93       	push	r16
+     af2:	ce 01       	movw	r24, r28
+     af4:	01 96       	adiw	r24, 0x01	; 1
+     af6:	5c 01       	movw	r10, r24
+     af8:	9f 93       	push	r25
+     afa:	8f 93       	push	r24
+     afc:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			LCD_Init();
+     b00:	0e 94 db 06 	call	0xdb6	; 0xdb6 <LCD_Init>
+     b04:	9f e3       	ldi	r25, 0x3F	; 63
+     b06:	22 e4       	ldi	r18, 0x42	; 66
+     b08:	8f e0       	ldi	r24, 0x0F	; 15
+     b0a:	91 50       	subi	r25, 0x01	; 1
+     b0c:	20 40       	sbci	r18, 0x00	; 0
+     b0e:	80 40       	sbci	r24, 0x00	; 0
+     b10:	e1 f7       	brne	.-8      	; 0xb0a <__vector_2+0x9e>
+     b12:	00 c0       	rjmp	.+0      	; 0xb14 <__vector_2+0xa8>
+     b14:	00 00       	nop
+			_delay_ms(5000);
+			lcd_puts(primaryAngleChar);
+     b16:	c5 01       	movw	r24, r10
+     b18:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     b1c:	9f eb       	ldi	r25, 0xBF	; 191
+     b1e:	2c e5       	ldi	r18, 0x5C	; 92
+     b20:	85 e1       	ldi	r24, 0x15	; 21
+     b22:	91 50       	subi	r25, 0x01	; 1
+     b24:	20 40       	sbci	r18, 0x00	; 0
+     b26:	80 40       	sbci	r24, 0x00	; 0
+     b28:	e1 f7       	brne	.-8      	; 0xb22 <__vector_2+0xb6>
+     b2a:	00 c0       	rjmp	.+0      	; 0xb2c <__vector_2+0xc0>
+     b2c:	00 00       	nop
+			_delay_ms(7000);
+			
+			////////////////////////////////////////////////////////////
+			//Perform Local Sweep
+			LocalSweep(primaryIndex);
+     b2e:	c6 01       	movw	r24, r12
+     b30:	0e 94 56 01 	call	0x2ac	; 0x2ac <LocalSweep>
+			ADCIndex = FindLowestADCLocal(primaryIndex);
+     b34:	c6 01       	movw	r24, r12
+     b36:	0e 94 54 04 	call	0x8a8	; 0x8a8 <FindLowestADCLocal>
+			localAngle = IndexToLocalAngle(primaryAngle, ADCIndex);
+     b3a:	bc 01       	movw	r22, r24
+     b3c:	c7 01       	movw	r24, r14
+     b3e:	0e 94 25 05 	call	0xa4a	; 0xa4a <IndexToLocalAngle>
+			
+			//Print Primary Angle to screen
+			
+			sprintf(localAngleChar, "%d", localAngle);
+     b42:	9f 93       	push	r25
+     b44:	8f 93       	push	r24
+     b46:	1f 93       	push	r17
+     b48:	0f 93       	push	r16
+     b4a:	8e 01       	movw	r16, r28
+     b4c:	09 5f       	subi	r16, 0xF9	; 249
+     b4e:	1f 4f       	sbci	r17, 0xFF	; 255
+     b50:	1f 93       	push	r17
+     b52:	0f 93       	push	r16
+     b54:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			LCD_Init();
+     b58:	0e 94 db 06 	call	0xdb6	; 0xdb6 <LCD_Init>
+     b5c:	9f e3       	ldi	r25, 0x3F	; 63
+     b5e:	22 e4       	ldi	r18, 0x42	; 66
+     b60:	8f e0       	ldi	r24, 0x0F	; 15
+     b62:	91 50       	subi	r25, 0x01	; 1
+     b64:	20 40       	sbci	r18, 0x00	; 0
+     b66:	80 40       	sbci	r24, 0x00	; 0
+     b68:	e1 f7       	brne	.-8      	; 0xb62 <__vector_2+0xf6>
+     b6a:	00 c0       	rjmp	.+0      	; 0xb6c <__vector_2+0x100>
+     b6c:	00 00       	nop
+			_delay_ms(5000);
+			lcd_puts(localAngleChar);
+     b6e:	c8 01       	movw	r24, r16
+     b70:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     b74:	9f eb       	ldi	r25, 0xBF	; 191
+     b76:	2c e5       	ldi	r18, 0x5C	; 92
+     b78:	85 e1       	ldi	r24, 0x15	; 21
+     b7a:	91 50       	subi	r25, 0x01	; 1
+     b7c:	20 40       	sbci	r18, 0x00	; 0
+     b7e:	80 40       	sbci	r24, 0x00	; 0
+     b80:	e1 f7       	brne	.-8      	; 0xb7a <__vector_2+0x10e>
+     b82:	00 c0       	rjmp	.+0      	; 0xb84 <__vector_2+0x118>
+     b84:	00 00       	nop
+     b86:	0f b6       	in	r0, 0x3f	; 63
+     b88:	f8 94       	cli
+     b8a:	de bf       	out	0x3e, r29	; 62
+     b8c:	0f be       	out	0x3f, r0	; 63
+     b8e:	cd bf       	out	0x3d, r28	; 61
+			_delay_ms(7000);
+		}
+		
+		//If ATL find highest ADC
+		if(mode == 1){
+     b90:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <mode>
+     b94:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <mode+0x1>
+     b98:	01 97       	sbiw	r24, 0x01	; 1
+     b9a:	09 f0       	breq	.+2      	; 0xb9e <__vector_2+0x132>
+     b9c:	5e c0       	rjmp	.+188    	; 0xc5a <__vector_2+0x1ee>
+			primaryIndex = findHighestADC();
+     b9e:	0e 94 42 01 	call	0x284	; 0x284 <findHighestADC>
+     ba2:	6c 01       	movw	r12, r24
+
+//Input: index of array
+//Return: Angle
+//Description:converts index to angle of servo
+int IndexToAngle(int index){
+	int angle = index *20;
+     ba4:	84 e1       	ldi	r24, 0x14	; 20
+     ba6:	8c 9d       	mul	r24, r12
+     ba8:	70 01       	movw	r14, r0
+     baa:	8d 9d       	mul	r24, r13
+     bac:	f0 0c       	add	r15, r0
+     bae:	11 24       	eor	r1, r1
+			primaryIndex = findHighestADC();
+			primaryAngle = IndexToAngle(primaryIndex);
+			
+			//Print Primary Angle to screen
+			
+			sprintf(primaryAngleChar, "%d", primaryAngle);
+     bb0:	ff 92       	push	r15
+     bb2:	ef 92       	push	r14
+     bb4:	00 e7       	ldi	r16, 0x70	; 112
+     bb6:	11 e0       	ldi	r17, 0x01	; 1
+     bb8:	1f 93       	push	r17
+     bba:	0f 93       	push	r16
+     bbc:	ce 01       	movw	r24, r28
+     bbe:	01 96       	adiw	r24, 0x01	; 1
+     bc0:	5c 01       	movw	r10, r24
+     bc2:	9f 93       	push	r25
+     bc4:	8f 93       	push	r24
+     bc6:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			LCD_Init();
+     bca:	0e 94 db 06 	call	0xdb6	; 0xdb6 <LCD_Init>
+     bce:	9f e3       	ldi	r25, 0x3F	; 63
+     bd0:	22 e4       	ldi	r18, 0x42	; 66
+     bd2:	8f e0       	ldi	r24, 0x0F	; 15
+     bd4:	91 50       	subi	r25, 0x01	; 1
+     bd6:	20 40       	sbci	r18, 0x00	; 0
+     bd8:	80 40       	sbci	r24, 0x00	; 0
+     bda:	e1 f7       	brne	.-8      	; 0xbd4 <__vector_2+0x168>
+     bdc:	00 c0       	rjmp	.+0      	; 0xbde <__vector_2+0x172>
+     bde:	00 00       	nop
+			_delay_ms(5000);
+			lcd_puts(primaryAngleChar);
+     be0:	c5 01       	movw	r24, r10
+     be2:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     be6:	9f eb       	ldi	r25, 0xBF	; 191
+     be8:	2c e5       	ldi	r18, 0x5C	; 92
+     bea:	85 e1       	ldi	r24, 0x15	; 21
+     bec:	91 50       	subi	r25, 0x01	; 1
+     bee:	20 40       	sbci	r18, 0x00	; 0
+     bf0:	80 40       	sbci	r24, 0x00	; 0
+     bf2:	e1 f7       	brne	.-8      	; 0xbec <__vector_2+0x180>
+     bf4:	00 c0       	rjmp	.+0      	; 0xbf6 <__vector_2+0x18a>
+     bf6:	00 00       	nop
+			_delay_ms(7000);
+			
+			////////////////////////////////////////////////////////////
+			//Perform Local Sweep
+			LocalSweep(primaryIndex);
+     bf8:	c6 01       	movw	r24, r12
+     bfa:	0e 94 56 01 	call	0x2ac	; 0x2ac <LocalSweep>
+			ADCIndex = FindHighestADCLocal(primaryIndex);
+     bfe:	c6 01       	movw	r24, r12
+     c00:	0e 94 b6 04 	call	0x96c	; 0x96c <FindHighestADCLocal>
+			localAngle = IndexToLocalAngle(primaryAngle, ADCIndex);
+     c04:	bc 01       	movw	r22, r24
+     c06:	c7 01       	movw	r24, r14
+     c08:	0e 94 25 05 	call	0xa4a	; 0xa4a <IndexToLocalAngle>
+			
+			//Print Primary Angle to screen
+			
+			sprintf(localAngleChar, "%d", localAngle);
+     c0c:	9f 93       	push	r25
+     c0e:	8f 93       	push	r24
+     c10:	1f 93       	push	r17
+     c12:	0f 93       	push	r16
+     c14:	8e 01       	movw	r16, r28
+     c16:	09 5f       	subi	r16, 0xF9	; 249
+     c18:	1f 4f       	sbci	r17, 0xFF	; 255
+     c1a:	1f 93       	push	r17
+     c1c:	0f 93       	push	r16
+     c1e:	0e 94 08 07 	call	0xe10	; 0xe10 <sprintf>
+			LCD_Init();
+     c22:	0e 94 db 06 	call	0xdb6	; 0xdb6 <LCD_Init>
+     c26:	9f e3       	ldi	r25, 0x3F	; 63
+     c28:	22 e4       	ldi	r18, 0x42	; 66
+     c2a:	8f e0       	ldi	r24, 0x0F	; 15
+     c2c:	91 50       	subi	r25, 0x01	; 1
+     c2e:	20 40       	sbci	r18, 0x00	; 0
+     c30:	80 40       	sbci	r24, 0x00	; 0
+     c32:	e1 f7       	brne	.-8      	; 0xc2c <__vector_2+0x1c0>
+     c34:	00 c0       	rjmp	.+0      	; 0xc36 <__vector_2+0x1ca>
+     c36:	00 00       	nop
+			_delay_ms(5000);
+			lcd_puts(localAngleChar);
+     c38:	c8 01       	movw	r24, r16
+     c3a:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     c3e:	9f eb       	ldi	r25, 0xBF	; 191
+     c40:	2c e5       	ldi	r18, 0x5C	; 92
+     c42:	85 e1       	ldi	r24, 0x15	; 21
+     c44:	91 50       	subi	r25, 0x01	; 1
+     c46:	20 40       	sbci	r18, 0x00	; 0
+     c48:	80 40       	sbci	r24, 0x00	; 0
+     c4a:	e1 f7       	brne	.-8      	; 0xc44 <__vector_2+0x1d8>
+     c4c:	00 c0       	rjmp	.+0      	; 0xc4e <__vector_2+0x1e2>
+     c4e:	00 00       	nop
+     c50:	0f b6       	in	r0, 0x3f	; 63
+     c52:	f8 94       	cli
+     c54:	de bf       	out	0x3e, r29	; 62
+     c56:	0f be       	out	0x3f, r0	; 63
+     c58:	cd bf       	out	0x3d, r28	; 61
+			
+		}
+		
+	}
+				
+}
+     c5a:	2c 96       	adiw	r28, 0x0c	; 12
+     c5c:	0f b6       	in	r0, 0x3f	; 63
+     c5e:	f8 94       	cli
+     c60:	de bf       	out	0x3e, r29	; 62
+     c62:	0f be       	out	0x3f, r0	; 63
+     c64:	cd bf       	out	0x3d, r28	; 61
+     c66:	df 91       	pop	r29
+     c68:	cf 91       	pop	r28
+     c6a:	ff 91       	pop	r31
+     c6c:	ef 91       	pop	r30
+     c6e:	bf 91       	pop	r27
+     c70:	af 91       	pop	r26
+     c72:	9f 91       	pop	r25
+     c74:	8f 91       	pop	r24
+     c76:	7f 91       	pop	r23
+     c78:	6f 91       	pop	r22
+     c7a:	5f 91       	pop	r21
+     c7c:	4f 91       	pop	r20
+     c7e:	3f 91       	pop	r19
+     c80:	2f 91       	pop	r18
+     c82:	1f 91       	pop	r17
+     c84:	0f 91       	pop	r16
+     c86:	ff 90       	pop	r15
+     c88:	ef 90       	pop	r14
+     c8a:	df 90       	pop	r13
+     c8c:	cf 90       	pop	r12
+     c8e:	bf 90       	pop	r11
+     c90:	af 90       	pop	r10
+     c92:	0f 90       	pop	r0
+     c94:	0f be       	out	0x3f, r0	; 63
+     c96:	0f 90       	pop	r0
+     c98:	1f 90       	pop	r1
+     c9a:	18 95       	reti
+
+00000c9c <__vector_3>:
+
+//Input: Occurs when B6 or B7 toggles. (UP/DOWN)
+//Return: n/a
+//Description: Switches between Follow the Light and Avoid the Light Modes
+ISR(PCINT1_vect){
+     c9c:	1f 92       	push	r1
+     c9e:	0f 92       	push	r0
+     ca0:	0f b6       	in	r0, 0x3f	; 63
+     ca2:	0f 92       	push	r0
+     ca4:	11 24       	eor	r1, r1
+     ca6:	2f 93       	push	r18
+     ca8:	3f 93       	push	r19
+     caa:	4f 93       	push	r20
+     cac:	5f 93       	push	r21
+     cae:	6f 93       	push	r22
+     cb0:	7f 93       	push	r23
+     cb2:	8f 93       	push	r24
+     cb4:	9f 93       	push	r25
+     cb6:	af 93       	push	r26
+     cb8:	bf 93       	push	r27
+     cba:	ef 93       	push	r30
+     cbc:	ff 93       	push	r31
+	isrCount++;
+     cbe:	80 91 78 01 	lds	r24, 0x0178	; 0x800178 <__data_end>
+     cc2:	90 91 79 01 	lds	r25, 0x0179	; 0x800179 <__data_end+0x1>
+     cc6:	01 96       	adiw	r24, 0x01	; 1
+     cc8:	90 93 79 01 	sts	0x0179, r25	; 0x800179 <__data_end+0x1>
+     ccc:	80 93 78 01 	sts	0x0178, r24	; 0x800178 <__data_end>
+	
+	if((isrCount % 2) == 0){
+     cd0:	80 fd       	sbrc	r24, 0
+     cd2:	19 c0       	rjmp	.+50     	; 0xd06 <__vector_3+0x6a>
+	
+		//Toggle the mode
+		if(mode == 0){
+     cd4:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <mode>
+     cd8:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <mode+0x1>
+     cdc:	89 2b       	or	r24, r25
+     cde:	59 f4       	brne	.+22     	; 0xcf6 <__vector_3+0x5a>
+			mode = 1;
+     ce0:	81 e0       	ldi	r24, 0x01	; 1
+     ce2:	90 e0       	ldi	r25, 0x00	; 0
+     ce4:	90 93 7b 01 	sts	0x017B, r25	; 0x80017b <mode+0x1>
+     ce8:	80 93 7a 01 	sts	0x017A, r24	; 0x80017a <mode>
+			lcd_puts("ATL");
+     cec:	83 e7       	ldi	r24, 0x73	; 115
+     cee:	91 e0       	ldi	r25, 0x01	; 1
+     cf0:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+     cf4:	08 c0       	rjmp	.+16     	; 0xd06 <__vector_3+0x6a>
+		}
+		else{
+			mode = 0;
+     cf6:	10 92 7b 01 	sts	0x017B, r1	; 0x80017b <mode+0x1>
+     cfa:	10 92 7a 01 	sts	0x017A, r1	; 0x80017a <mode>
+			lcd_puts("FTL");
+     cfe:	8c e6       	ldi	r24, 0x6C	; 108
+     d00:	91 e0       	ldi	r25, 0x01	; 1
+     d02:	0e 94 f0 06 	call	0xde0	; 0xde0 <lcd_puts>
+		}
+	} //end of if
+}
+     d06:	ff 91       	pop	r31
+     d08:	ef 91       	pop	r30
+     d0a:	bf 91       	pop	r27
+     d0c:	af 91       	pop	r26
+     d0e:	9f 91       	pop	r25
+     d10:	8f 91       	pop	r24
+     d12:	7f 91       	pop	r23
+     d14:	6f 91       	pop	r22
+     d16:	5f 91       	pop	r21
+     d18:	4f 91       	pop	r20
+     d1a:	3f 91       	pop	r19
+     d1c:	2f 91       	pop	r18
+     d1e:	0f 90       	pop	r0
+     d20:	0f be       	out	0x3f, r0	; 63
+     d22:	0f 90       	pop	r0
+     d24:	1f 90       	pop	r1
+     d26:	18 95       	reti
+
+00000d28 <LCD_WriteDigit>:
+    char mask, nibble;
+    char *ptr;
+    char i;
+
+
+    if (digit > 5)                              // Skip if digit is illegal
+     d28:	66 30       	cpi	r22, 0x06	; 6
+     d2a:	b0 f5       	brcc	.+108    	; 0xd98 <LCD_WriteDigit+0x70>
+        return;
+
+    //Lookup character table for segmet data
+    if ((c >= '*') && (c <= 'z'))
+     d2c:	96 ed       	ldi	r25, 0xD6	; 214
+     d2e:	98 0f       	add	r25, r24
+     d30:	91 35       	cpi	r25, 0x51	; 81
+     d32:	68 f4       	brcc	.+26     	; 0xd4e <LCD_WriteDigit+0x26>
+    {
+        // c is a letter
+        if (c >= 'a')                           // Convert to upper case
+     d34:	81 36       	cpi	r24, 0x61	; 97
+     d36:	08 f0       	brcs	.+2      	; 0xd3a <LCD_WriteDigit+0x12>
+            c &= ~0x20;                         // if necessarry
+     d38:	8f 7d       	andi	r24, 0xDF	; 223
+
+        c -= '*';
+
+        seg = LCD_character_table[c];
+     d3a:	8a 52       	subi	r24, 0x2A	; 42
+     d3c:	e8 2f       	mov	r30, r24
+     d3e:	f0 e0       	ldi	r31, 0x00	; 0
+     d40:	ee 0f       	add	r30, r30
+     d42:	ff 1f       	adc	r31, r31
+     d44:	e0 50       	subi	r30, 0x00	; 0
+     d46:	ff 4f       	sbci	r31, 0xFF	; 255
+     d48:	20 81       	ld	r18, Z
+     d4a:	31 81       	ldd	r19, Z+1	; 0x01
+     d4c:	02 c0       	rjmp	.+4      	; 0xd52 <LCD_WriteDigit+0x2a>
+*
+*****************************************************************************/
+void LCD_WriteDigit(char c, char digit)
+{
+
+    unsigned int seg = 0x0000;                  // Holds the segment pattern
+     d4e:	20 e0       	ldi	r18, 0x00	; 0
+     d50:	30 e0       	ldi	r19, 0x00	; 0
+
+        seg = LCD_character_table[c];
+    }
+
+    // Adjust mask according to LCD segment mapping
+    if (digit & 0x01)
+     d52:	a6 2f       	mov	r26, r22
+     d54:	a1 70       	andi	r26, 0x01	; 1
+     d56:	60 fd       	sbrc	r22, 0
+     d58:	02 c0       	rjmp	.+4      	; 0xd5e <LCD_WriteDigit+0x36>
+        mask = 0x0F;                // Digit 1, 3, 5
+    else
+        mask = 0xF0;                // Digit 0, 2, 4
+     d5a:	70 ef       	ldi	r23, 0xF0	; 240
+     d5c:	01 c0       	rjmp	.+2      	; 0xd60 <LCD_WriteDigit+0x38>
+        seg = LCD_character_table[c];
+    }
+
+    // Adjust mask according to LCD segment mapping
+    if (digit & 0x01)
+        mask = 0x0F;                // Digit 1, 3, 5
+     d5e:	7f e0       	ldi	r23, 0x0F	; 15
+    else
+        mask = 0xF0;                // Digit 0, 2, 4
+
+    //ptr = LCD_Data + (digit >> 1);  // digit = {0,0,1,1,2,2}
+	ptr = pLCDREG + (digit >> 1);  // digit = {0,0,1,1,2,2}
+     d60:	66 95       	lsr	r22
+     d62:	e6 2f       	mov	r30, r22
+     d64:	f0 e0       	ldi	r31, 0x00	; 0
+     d66:	e4 51       	subi	r30, 0x14	; 20
+     d68:	ff 4f       	sbci	r31, 0xFF	; 255
+     d6a:	af 01       	movw	r20, r30
+     d6c:	4c 5e       	subi	r20, 0xEC	; 236
+     d6e:	5f 4f       	sbci	r21, 0xFF	; 255
+
+    for (i = 0; i < 4; i++)
+    {
+        nibble = seg & 0x000F;
+     d70:	82 2f       	mov	r24, r18
+     d72:	8f 70       	andi	r24, 0x0F	; 15
+        seg >>= 4;
+     d74:	32 95       	swap	r19
+     d76:	22 95       	swap	r18
+     d78:	2f 70       	andi	r18, 0x0F	; 15
+     d7a:	23 27       	eor	r18, r19
+     d7c:	3f 70       	andi	r19, 0x0F	; 15
+     d7e:	23 27       	eor	r18, r19
+        if (digit & 0x01)
+     d80:	aa 23       	and	r26, r26
+     d82:	11 f0       	breq	.+4      	; 0xd88 <LCD_WriteDigit+0x60>
+            nibble <<= 4;
+     d84:	82 95       	swap	r24
+     d86:	80 7f       	andi	r24, 0xF0	; 240
+        *ptr = (*ptr & mask) | nibble;
+     d88:	90 81       	ld	r25, Z
+     d8a:	97 23       	and	r25, r23
+     d8c:	89 2b       	or	r24, r25
+     d8e:	80 83       	st	Z, r24
+        ptr += 5;
+     d90:	35 96       	adiw	r30, 0x05	; 5
+        mask = 0xF0;                // Digit 0, 2, 4
+
+    //ptr = LCD_Data + (digit >> 1);  // digit = {0,0,1,1,2,2}
+	ptr = pLCDREG + (digit >> 1);  // digit = {0,0,1,1,2,2}
+
+    for (i = 0; i < 4; i++)
+     d92:	4e 17       	cp	r20, r30
+     d94:	5f 07       	cpc	r21, r31
+     d96:	61 f7       	brne	.-40     	; 0xd70 <LCD_WriteDigit+0x48>
+     d98:	08 95       	ret
+
+00000d9a <LCD_AllSegments>:
+*****************************************************************************/
+void LCD_AllSegments(char show)
+{
+    unsigned char i;
+
+    if (show)
+     d9a:	91 e0       	ldi	r25, 0x01	; 1
+     d9c:	81 11       	cpse	r24, r1
+     d9e:	01 c0       	rjmp	.+2      	; 0xda2 <LCD_AllSegments+0x8>
+     da0:	90 e0       	ldi	r25, 0x00	; 0
+     da2:	89 2f       	mov	r24, r25
+     da4:	81 95       	neg	r24
+     da6:	ec ee       	ldi	r30, 0xEC	; 236
+     da8:	f0 e0       	ldi	r31, 0x00	; 0
+        show = 0xFF;
+
+    // Set/clear all bits in all LCD registers
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+        *(pLCDREG + i) = show;
+     daa:	81 93       	st	Z+, r24
+
+    if (show)
+        show = 0xFF;
+
+    // Set/clear all bits in all LCD registers
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+     dac:	e1 15       	cp	r30, r1
+     dae:	91 e0       	ldi	r25, 0x01	; 1
+     db0:	f9 07       	cpc	r31, r25
+     db2:	d9 f7       	brne	.-10     	; 0xdaa <LCD_AllSegments+0x10>
+        *(pLCDREG + i) = show;
+}
+     db4:	08 95       	ret
+
+00000db6 <LCD_Init>:
+*                   Set up the LCD (timing, contrast, etc.)
+*
+*****************************************************************************/
+void LCD_Init (void)
+{
+    LCD_AllSegments(FALSE);                     // Clear segment buffer.
+     db6:	80 e0       	ldi	r24, 0x00	; 0
+     db8:	0e 94 cd 06 	call	0xd9a	; 0xd9a <LCD_AllSegments>
+
+    LCD_CONTRAST_LEVEL(LCD_INITIAL_CONTRAST);    //Set the LCD contrast level
+     dbc:	e7 ee       	ldi	r30, 0xE7	; 231
+     dbe:	f0 e0       	ldi	r31, 0x00	; 0
+     dc0:	80 81       	ld	r24, Z
+     dc2:	8f 60       	ori	r24, 0x0F	; 15
+     dc4:	80 83       	st	Z, r24
+
+    // Select asynchronous clock source, enable all COM pins and enable all
+    // segment pins.
+    LCDCRB = (1<<LCDCS) | (3<<LCDMUX0) | (7<<LCDPM0);
+     dc6:	87 eb       	ldi	r24, 0xB7	; 183
+     dc8:	80 93 e5 00 	sts	0x00E5, r24	; 0x8000e5 <__TEXT_REGION_LENGTH__+0x7e00e5>
+
+    // Set LCD prescaler to give a framerate of 32,0 Hz
+    LCDFRR = (0<<LCDPS0) | (7<<LCDCD0);    
+     dcc:	87 e0       	ldi	r24, 0x07	; 7
+     dce:	80 93 e6 00 	sts	0x00E6, r24	; 0x8000e6 <__TEXT_REGION_LENGTH__+0x7e00e6>
+
+    LCDCRA = (1<<LCDEN) | (1<<LCDAB);           // Enable LCD and set low power waveform
+     dd2:	80 ec       	ldi	r24, 0xC0	; 192
+     dd4:	80 93 e4 00 	sts	0x00E4, r24	; 0x8000e4 <__TEXT_REGION_LENGTH__+0x7e00e4>
+    //LCDCRA |= (1<<LCDIE);  // fixed--don't need this
+
+    //updated 2006-10-10, setting LCD drive time to 1150us in FW rev 07, 
+    //instead of previous 300us in FW rev 06. Due to some variations on the LCD
+    //glass provided to the AVR Butterfly production.
+    LCDCCR |= (1<<LCDDC2) | (1<<LCDDC1) | (1<<LCDDC0);
+     dd8:	80 81       	ld	r24, Z
+     dda:	80 6e       	ori	r24, 0xE0	; 224
+     ddc:	80 83       	st	Z, r24
+     dde:	08 95       	ret
+
+00000de0 <lcd_puts>:
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+        *(pLCDREG + i) = show;
+}
+
+
+void lcd_puts(const char  c[]) { //same const char *c
+     de0:	0f 93       	push	r16
+     de2:	1f 93       	push	r17
+     de4:	cf 93       	push	r28
+     de6:	fc 01       	movw	r30, r24
+	uint8_t ch = *c;
+     de8:	80 81       	ld	r24, Z
+	int location = 0;
+	while(ch != 0) {
+     dea:	88 23       	and	r24, r24
+     dec:	69 f0       	breq	.+26     	; 0xe08 <lcd_puts+0x28>
+     dee:	8f 01       	movw	r16, r30
+     df0:	0f 5f       	subi	r16, 0xFF	; 255
+     df2:	1f 4f       	sbci	r17, 0xFF	; 255
+     df4:	c0 e0       	ldi	r28, 0x00	; 0
+		LCD_WriteDigit(ch, location);
+     df6:	6c 2f       	mov	r22, r28
+     df8:	0e 94 94 06 	call	0xd28	; 0xd28 <LCD_WriteDigit>
+		ch = *(++c);
+     dfc:	f8 01       	movw	r30, r16
+     dfe:	81 91       	ld	r24, Z+
+     e00:	8f 01       	movw	r16, r30
+     e02:	cf 5f       	subi	r28, 0xFF	; 255
+
+
+void lcd_puts(const char  c[]) { //same const char *c
+	uint8_t ch = *c;
+	int location = 0;
+	while(ch != 0) {
+     e04:	81 11       	cpse	r24, r1
+     e06:	f7 cf       	rjmp	.-18     	; 0xdf6 <lcd_puts+0x16>
+		LCD_WriteDigit(ch, location);
+		ch = *(++c);
+		location ++;
+	}
+     e08:	cf 91       	pop	r28
+     e0a:	1f 91       	pop	r17
+     e0c:	0f 91       	pop	r16
+     e0e:	08 95       	ret
+
+00000e10 <sprintf>:
+     e10:	ae e0       	ldi	r26, 0x0E	; 14
+     e12:	b0 e0       	ldi	r27, 0x00	; 0
+     e14:	ee e0       	ldi	r30, 0x0E	; 14
+     e16:	f7 e0       	ldi	r31, 0x07	; 7
+     e18:	0c 94 c9 09 	jmp	0x1392	; 0x1392 <__prologue_saves__+0x1c>
+     e1c:	0d 89       	ldd	r16, Y+21	; 0x15
+     e1e:	1e 89       	ldd	r17, Y+22	; 0x16
+     e20:	86 e0       	ldi	r24, 0x06	; 6
+     e22:	8c 83       	std	Y+4, r24	; 0x04
+     e24:	1a 83       	std	Y+2, r17	; 0x02
+     e26:	09 83       	std	Y+1, r16	; 0x01
+     e28:	8f ef       	ldi	r24, 0xFF	; 255
+     e2a:	9f e7       	ldi	r25, 0x7F	; 127
+     e2c:	9e 83       	std	Y+6, r25	; 0x06
+     e2e:	8d 83       	std	Y+5, r24	; 0x05
+     e30:	ae 01       	movw	r20, r28
+     e32:	47 5e       	subi	r20, 0xE7	; 231
+     e34:	5f 4f       	sbci	r21, 0xFF	; 255
+     e36:	6f 89       	ldd	r22, Y+23	; 0x17
+     e38:	78 8d       	ldd	r23, Y+24	; 0x18
+     e3a:	ce 01       	movw	r24, r28
+     e3c:	01 96       	adiw	r24, 0x01	; 1
+     e3e:	0e 94 2a 07 	call	0xe54	; 0xe54 <vfprintf>
+     e42:	ef 81       	ldd	r30, Y+7	; 0x07
+     e44:	f8 85       	ldd	r31, Y+8	; 0x08
+     e46:	e0 0f       	add	r30, r16
+     e48:	f1 1f       	adc	r31, r17
+     e4a:	10 82       	st	Z, r1
+     e4c:	2e 96       	adiw	r28, 0x0e	; 14
+     e4e:	e4 e0       	ldi	r30, 0x04	; 4
+     e50:	0c 94 e5 09 	jmp	0x13ca	; 0x13ca <__epilogue_restores__+0x1c>
+
+00000e54 <vfprintf>:
+     e54:	ab e0       	ldi	r26, 0x0B	; 11
+     e56:	b0 e0       	ldi	r27, 0x00	; 0
+     e58:	e0 e3       	ldi	r30, 0x30	; 48
+     e5a:	f7 e0       	ldi	r31, 0x07	; 7
+     e5c:	0c 94 bb 09 	jmp	0x1376	; 0x1376 <__prologue_saves__>
+     e60:	6c 01       	movw	r12, r24
+     e62:	7b 01       	movw	r14, r22
+     e64:	8a 01       	movw	r16, r20
+     e66:	fc 01       	movw	r30, r24
+     e68:	17 82       	std	Z+7, r1	; 0x07
+     e6a:	16 82       	std	Z+6, r1	; 0x06
+     e6c:	83 81       	ldd	r24, Z+3	; 0x03
+     e6e:	81 ff       	sbrs	r24, 1
+     e70:	cc c1       	rjmp	.+920    	; 0x120a <vfprintf+0x3b6>
+     e72:	ce 01       	movw	r24, r28
+     e74:	01 96       	adiw	r24, 0x01	; 1
+     e76:	3c 01       	movw	r6, r24
+     e78:	f6 01       	movw	r30, r12
+     e7a:	93 81       	ldd	r25, Z+3	; 0x03
+     e7c:	f7 01       	movw	r30, r14
+     e7e:	93 fd       	sbrc	r25, 3
+     e80:	85 91       	lpm	r24, Z+
+     e82:	93 ff       	sbrs	r25, 3
+     e84:	81 91       	ld	r24, Z+
+     e86:	7f 01       	movw	r14, r30
+     e88:	88 23       	and	r24, r24
+     e8a:	09 f4       	brne	.+2      	; 0xe8e <vfprintf+0x3a>
+     e8c:	ba c1       	rjmp	.+884    	; 0x1202 <vfprintf+0x3ae>
+     e8e:	85 32       	cpi	r24, 0x25	; 37
+     e90:	39 f4       	brne	.+14     	; 0xea0 <vfprintf+0x4c>
+     e92:	93 fd       	sbrc	r25, 3
+     e94:	85 91       	lpm	r24, Z+
+     e96:	93 ff       	sbrs	r25, 3
+     e98:	81 91       	ld	r24, Z+
+     e9a:	7f 01       	movw	r14, r30
+     e9c:	85 32       	cpi	r24, 0x25	; 37
+     e9e:	29 f4       	brne	.+10     	; 0xeaa <vfprintf+0x56>
+     ea0:	b6 01       	movw	r22, r12
+     ea2:	90 e0       	ldi	r25, 0x00	; 0
+     ea4:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+     ea8:	e7 cf       	rjmp	.-50     	; 0xe78 <vfprintf+0x24>
+     eaa:	91 2c       	mov	r9, r1
+     eac:	21 2c       	mov	r2, r1
+     eae:	31 2c       	mov	r3, r1
+     eb0:	ff e1       	ldi	r31, 0x1F	; 31
+     eb2:	f3 15       	cp	r31, r3
+     eb4:	d8 f0       	brcs	.+54     	; 0xeec <vfprintf+0x98>
+     eb6:	8b 32       	cpi	r24, 0x2B	; 43
+     eb8:	79 f0       	breq	.+30     	; 0xed8 <vfprintf+0x84>
+     eba:	38 f4       	brcc	.+14     	; 0xeca <vfprintf+0x76>
+     ebc:	80 32       	cpi	r24, 0x20	; 32
+     ebe:	79 f0       	breq	.+30     	; 0xede <vfprintf+0x8a>
+     ec0:	83 32       	cpi	r24, 0x23	; 35
+     ec2:	a1 f4       	brne	.+40     	; 0xeec <vfprintf+0x98>
+     ec4:	23 2d       	mov	r18, r3
+     ec6:	20 61       	ori	r18, 0x10	; 16
+     ec8:	1d c0       	rjmp	.+58     	; 0xf04 <vfprintf+0xb0>
+     eca:	8d 32       	cpi	r24, 0x2D	; 45
+     ecc:	61 f0       	breq	.+24     	; 0xee6 <vfprintf+0x92>
+     ece:	80 33       	cpi	r24, 0x30	; 48
+     ed0:	69 f4       	brne	.+26     	; 0xeec <vfprintf+0x98>
+     ed2:	23 2d       	mov	r18, r3
+     ed4:	21 60       	ori	r18, 0x01	; 1
+     ed6:	16 c0       	rjmp	.+44     	; 0xf04 <vfprintf+0xb0>
+     ed8:	83 2d       	mov	r24, r3
+     eda:	82 60       	ori	r24, 0x02	; 2
+     edc:	38 2e       	mov	r3, r24
+     ede:	e3 2d       	mov	r30, r3
+     ee0:	e4 60       	ori	r30, 0x04	; 4
+     ee2:	3e 2e       	mov	r3, r30
+     ee4:	2a c0       	rjmp	.+84     	; 0xf3a <vfprintf+0xe6>
+     ee6:	f3 2d       	mov	r31, r3
+     ee8:	f8 60       	ori	r31, 0x08	; 8
+     eea:	1d c0       	rjmp	.+58     	; 0xf26 <vfprintf+0xd2>
+     eec:	37 fc       	sbrc	r3, 7
+     eee:	2d c0       	rjmp	.+90     	; 0xf4a <vfprintf+0xf6>
+     ef0:	20 ed       	ldi	r18, 0xD0	; 208
+     ef2:	28 0f       	add	r18, r24
+     ef4:	2a 30       	cpi	r18, 0x0A	; 10
+     ef6:	40 f0       	brcs	.+16     	; 0xf08 <vfprintf+0xb4>
+     ef8:	8e 32       	cpi	r24, 0x2E	; 46
+     efa:	b9 f4       	brne	.+46     	; 0xf2a <vfprintf+0xd6>
+     efc:	36 fc       	sbrc	r3, 6
+     efe:	81 c1       	rjmp	.+770    	; 0x1202 <vfprintf+0x3ae>
+     f00:	23 2d       	mov	r18, r3
+     f02:	20 64       	ori	r18, 0x40	; 64
+     f04:	32 2e       	mov	r3, r18
+     f06:	19 c0       	rjmp	.+50     	; 0xf3a <vfprintf+0xe6>
+     f08:	36 fe       	sbrs	r3, 6
+     f0a:	06 c0       	rjmp	.+12     	; 0xf18 <vfprintf+0xc4>
+     f0c:	8a e0       	ldi	r24, 0x0A	; 10
+     f0e:	98 9e       	mul	r9, r24
+     f10:	20 0d       	add	r18, r0
+     f12:	11 24       	eor	r1, r1
+     f14:	92 2e       	mov	r9, r18
+     f16:	11 c0       	rjmp	.+34     	; 0xf3a <vfprintf+0xe6>
+     f18:	ea e0       	ldi	r30, 0x0A	; 10
+     f1a:	2e 9e       	mul	r2, r30
+     f1c:	20 0d       	add	r18, r0
+     f1e:	11 24       	eor	r1, r1
+     f20:	22 2e       	mov	r2, r18
+     f22:	f3 2d       	mov	r31, r3
+     f24:	f0 62       	ori	r31, 0x20	; 32
+     f26:	3f 2e       	mov	r3, r31
+     f28:	08 c0       	rjmp	.+16     	; 0xf3a <vfprintf+0xe6>
+     f2a:	8c 36       	cpi	r24, 0x6C	; 108
+     f2c:	21 f4       	brne	.+8      	; 0xf36 <vfprintf+0xe2>
+     f2e:	83 2d       	mov	r24, r3
+     f30:	80 68       	ori	r24, 0x80	; 128
+     f32:	38 2e       	mov	r3, r24
+     f34:	02 c0       	rjmp	.+4      	; 0xf3a <vfprintf+0xe6>
+     f36:	88 36       	cpi	r24, 0x68	; 104
+     f38:	41 f4       	brne	.+16     	; 0xf4a <vfprintf+0xf6>
+     f3a:	f7 01       	movw	r30, r14
+     f3c:	93 fd       	sbrc	r25, 3
+     f3e:	85 91       	lpm	r24, Z+
+     f40:	93 ff       	sbrs	r25, 3
+     f42:	81 91       	ld	r24, Z+
+     f44:	7f 01       	movw	r14, r30
+     f46:	81 11       	cpse	r24, r1
+     f48:	b3 cf       	rjmp	.-154    	; 0xeb0 <vfprintf+0x5c>
+     f4a:	98 2f       	mov	r25, r24
+     f4c:	9f 7d       	andi	r25, 0xDF	; 223
+     f4e:	95 54       	subi	r25, 0x45	; 69
+     f50:	93 30       	cpi	r25, 0x03	; 3
+     f52:	28 f4       	brcc	.+10     	; 0xf5e <vfprintf+0x10a>
+     f54:	0c 5f       	subi	r16, 0xFC	; 252
+     f56:	1f 4f       	sbci	r17, 0xFF	; 255
+     f58:	9f e3       	ldi	r25, 0x3F	; 63
+     f5a:	99 83       	std	Y+1, r25	; 0x01
+     f5c:	0d c0       	rjmp	.+26     	; 0xf78 <vfprintf+0x124>
+     f5e:	83 36       	cpi	r24, 0x63	; 99
+     f60:	31 f0       	breq	.+12     	; 0xf6e <vfprintf+0x11a>
+     f62:	83 37       	cpi	r24, 0x73	; 115
+     f64:	71 f0       	breq	.+28     	; 0xf82 <vfprintf+0x12e>
+     f66:	83 35       	cpi	r24, 0x53	; 83
+     f68:	09 f0       	breq	.+2      	; 0xf6c <vfprintf+0x118>
+     f6a:	59 c0       	rjmp	.+178    	; 0x101e <vfprintf+0x1ca>
+     f6c:	21 c0       	rjmp	.+66     	; 0xfb0 <vfprintf+0x15c>
+     f6e:	f8 01       	movw	r30, r16
+     f70:	80 81       	ld	r24, Z
+     f72:	89 83       	std	Y+1, r24	; 0x01
+     f74:	0e 5f       	subi	r16, 0xFE	; 254
+     f76:	1f 4f       	sbci	r17, 0xFF	; 255
+     f78:	88 24       	eor	r8, r8
+     f7a:	83 94       	inc	r8
+     f7c:	91 2c       	mov	r9, r1
+     f7e:	53 01       	movw	r10, r6
+     f80:	13 c0       	rjmp	.+38     	; 0xfa8 <vfprintf+0x154>
+     f82:	28 01       	movw	r4, r16
+     f84:	f2 e0       	ldi	r31, 0x02	; 2
+     f86:	4f 0e       	add	r4, r31
+     f88:	51 1c       	adc	r5, r1
+     f8a:	f8 01       	movw	r30, r16
+     f8c:	a0 80       	ld	r10, Z
+     f8e:	b1 80       	ldd	r11, Z+1	; 0x01
+     f90:	36 fe       	sbrs	r3, 6
+     f92:	03 c0       	rjmp	.+6      	; 0xf9a <vfprintf+0x146>
+     f94:	69 2d       	mov	r22, r9
+     f96:	70 e0       	ldi	r23, 0x00	; 0
+     f98:	02 c0       	rjmp	.+4      	; 0xf9e <vfprintf+0x14a>
+     f9a:	6f ef       	ldi	r22, 0xFF	; 255
+     f9c:	7f ef       	ldi	r23, 0xFF	; 255
+     f9e:	c5 01       	movw	r24, r10
+     fa0:	0e 94 16 09 	call	0x122c	; 0x122c <strnlen>
+     fa4:	4c 01       	movw	r8, r24
+     fa6:	82 01       	movw	r16, r4
+     fa8:	f3 2d       	mov	r31, r3
+     faa:	ff 77       	andi	r31, 0x7F	; 127
+     fac:	3f 2e       	mov	r3, r31
+     fae:	16 c0       	rjmp	.+44     	; 0xfdc <vfprintf+0x188>
+     fb0:	28 01       	movw	r4, r16
+     fb2:	22 e0       	ldi	r18, 0x02	; 2
+     fb4:	42 0e       	add	r4, r18
+     fb6:	51 1c       	adc	r5, r1
+     fb8:	f8 01       	movw	r30, r16
+     fba:	a0 80       	ld	r10, Z
+     fbc:	b1 80       	ldd	r11, Z+1	; 0x01
+     fbe:	36 fe       	sbrs	r3, 6
+     fc0:	03 c0       	rjmp	.+6      	; 0xfc8 <vfprintf+0x174>
+     fc2:	69 2d       	mov	r22, r9
+     fc4:	70 e0       	ldi	r23, 0x00	; 0
+     fc6:	02 c0       	rjmp	.+4      	; 0xfcc <vfprintf+0x178>
+     fc8:	6f ef       	ldi	r22, 0xFF	; 255
+     fca:	7f ef       	ldi	r23, 0xFF	; 255
+     fcc:	c5 01       	movw	r24, r10
+     fce:	0e 94 0b 09 	call	0x1216	; 0x1216 <strnlen_P>
+     fd2:	4c 01       	movw	r8, r24
+     fd4:	f3 2d       	mov	r31, r3
+     fd6:	f0 68       	ori	r31, 0x80	; 128
+     fd8:	3f 2e       	mov	r3, r31
+     fda:	82 01       	movw	r16, r4
+     fdc:	33 fc       	sbrc	r3, 3
+     fde:	1b c0       	rjmp	.+54     	; 0x1016 <vfprintf+0x1c2>
+     fe0:	82 2d       	mov	r24, r2
+     fe2:	90 e0       	ldi	r25, 0x00	; 0
+     fe4:	88 16       	cp	r8, r24
+     fe6:	99 06       	cpc	r9, r25
+     fe8:	b0 f4       	brcc	.+44     	; 0x1016 <vfprintf+0x1c2>
+     fea:	b6 01       	movw	r22, r12
+     fec:	80 e2       	ldi	r24, 0x20	; 32
+     fee:	90 e0       	ldi	r25, 0x00	; 0
+     ff0:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+     ff4:	2a 94       	dec	r2
+     ff6:	f4 cf       	rjmp	.-24     	; 0xfe0 <vfprintf+0x18c>
+     ff8:	f5 01       	movw	r30, r10
+     ffa:	37 fc       	sbrc	r3, 7
+     ffc:	85 91       	lpm	r24, Z+
+     ffe:	37 fe       	sbrs	r3, 7
+    1000:	81 91       	ld	r24, Z+
+    1002:	5f 01       	movw	r10, r30
+    1004:	b6 01       	movw	r22, r12
+    1006:	90 e0       	ldi	r25, 0x00	; 0
+    1008:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    100c:	21 10       	cpse	r2, r1
+    100e:	2a 94       	dec	r2
+    1010:	21 e0       	ldi	r18, 0x01	; 1
+    1012:	82 1a       	sub	r8, r18
+    1014:	91 08       	sbc	r9, r1
+    1016:	81 14       	cp	r8, r1
+    1018:	91 04       	cpc	r9, r1
+    101a:	71 f7       	brne	.-36     	; 0xff8 <vfprintf+0x1a4>
+    101c:	e8 c0       	rjmp	.+464    	; 0x11ee <vfprintf+0x39a>
+    101e:	84 36       	cpi	r24, 0x64	; 100
+    1020:	11 f0       	breq	.+4      	; 0x1026 <vfprintf+0x1d2>
+    1022:	89 36       	cpi	r24, 0x69	; 105
+    1024:	41 f5       	brne	.+80     	; 0x1076 <vfprintf+0x222>
+    1026:	f8 01       	movw	r30, r16
+    1028:	37 fe       	sbrs	r3, 7
+    102a:	07 c0       	rjmp	.+14     	; 0x103a <vfprintf+0x1e6>
+    102c:	60 81       	ld	r22, Z
+    102e:	71 81       	ldd	r23, Z+1	; 0x01
+    1030:	82 81       	ldd	r24, Z+2	; 0x02
+    1032:	93 81       	ldd	r25, Z+3	; 0x03
+    1034:	0c 5f       	subi	r16, 0xFC	; 252
+    1036:	1f 4f       	sbci	r17, 0xFF	; 255
+    1038:	08 c0       	rjmp	.+16     	; 0x104a <vfprintf+0x1f6>
+    103a:	60 81       	ld	r22, Z
+    103c:	71 81       	ldd	r23, Z+1	; 0x01
+    103e:	07 2e       	mov	r0, r23
+    1040:	00 0c       	add	r0, r0
+    1042:	88 0b       	sbc	r24, r24
+    1044:	99 0b       	sbc	r25, r25
+    1046:	0e 5f       	subi	r16, 0xFE	; 254
+    1048:	1f 4f       	sbci	r17, 0xFF	; 255
+    104a:	f3 2d       	mov	r31, r3
+    104c:	ff 76       	andi	r31, 0x6F	; 111
+    104e:	3f 2e       	mov	r3, r31
+    1050:	97 ff       	sbrs	r25, 7
+    1052:	09 c0       	rjmp	.+18     	; 0x1066 <vfprintf+0x212>
+    1054:	90 95       	com	r25
+    1056:	80 95       	com	r24
+    1058:	70 95       	com	r23
+    105a:	61 95       	neg	r22
+    105c:	7f 4f       	sbci	r23, 0xFF	; 255
+    105e:	8f 4f       	sbci	r24, 0xFF	; 255
+    1060:	9f 4f       	sbci	r25, 0xFF	; 255
+    1062:	f0 68       	ori	r31, 0x80	; 128
+    1064:	3f 2e       	mov	r3, r31
+    1066:	2a e0       	ldi	r18, 0x0A	; 10
+    1068:	30 e0       	ldi	r19, 0x00	; 0
+    106a:	a3 01       	movw	r20, r6
+    106c:	0e 94 5d 09 	call	0x12ba	; 0x12ba <__ultoa_invert>
+    1070:	88 2e       	mov	r8, r24
+    1072:	86 18       	sub	r8, r6
+    1074:	45 c0       	rjmp	.+138    	; 0x1100 <vfprintf+0x2ac>
+    1076:	85 37       	cpi	r24, 0x75	; 117
+    1078:	31 f4       	brne	.+12     	; 0x1086 <vfprintf+0x232>
+    107a:	23 2d       	mov	r18, r3
+    107c:	2f 7e       	andi	r18, 0xEF	; 239
+    107e:	b2 2e       	mov	r11, r18
+    1080:	2a e0       	ldi	r18, 0x0A	; 10
+    1082:	30 e0       	ldi	r19, 0x00	; 0
+    1084:	25 c0       	rjmp	.+74     	; 0x10d0 <vfprintf+0x27c>
+    1086:	93 2d       	mov	r25, r3
+    1088:	99 7f       	andi	r25, 0xF9	; 249
+    108a:	b9 2e       	mov	r11, r25
+    108c:	8f 36       	cpi	r24, 0x6F	; 111
+    108e:	c1 f0       	breq	.+48     	; 0x10c0 <vfprintf+0x26c>
+    1090:	18 f4       	brcc	.+6      	; 0x1098 <vfprintf+0x244>
+    1092:	88 35       	cpi	r24, 0x58	; 88
+    1094:	79 f0       	breq	.+30     	; 0x10b4 <vfprintf+0x260>
+    1096:	b5 c0       	rjmp	.+362    	; 0x1202 <vfprintf+0x3ae>
+    1098:	80 37       	cpi	r24, 0x70	; 112
+    109a:	19 f0       	breq	.+6      	; 0x10a2 <vfprintf+0x24e>
+    109c:	88 37       	cpi	r24, 0x78	; 120
+    109e:	21 f0       	breq	.+8      	; 0x10a8 <vfprintf+0x254>
+    10a0:	b0 c0       	rjmp	.+352    	; 0x1202 <vfprintf+0x3ae>
+    10a2:	e9 2f       	mov	r30, r25
+    10a4:	e0 61       	ori	r30, 0x10	; 16
+    10a6:	be 2e       	mov	r11, r30
+    10a8:	b4 fe       	sbrs	r11, 4
+    10aa:	0d c0       	rjmp	.+26     	; 0x10c6 <vfprintf+0x272>
+    10ac:	fb 2d       	mov	r31, r11
+    10ae:	f4 60       	ori	r31, 0x04	; 4
+    10b0:	bf 2e       	mov	r11, r31
+    10b2:	09 c0       	rjmp	.+18     	; 0x10c6 <vfprintf+0x272>
+    10b4:	34 fe       	sbrs	r3, 4
+    10b6:	0a c0       	rjmp	.+20     	; 0x10cc <vfprintf+0x278>
+    10b8:	29 2f       	mov	r18, r25
+    10ba:	26 60       	ori	r18, 0x06	; 6
+    10bc:	b2 2e       	mov	r11, r18
+    10be:	06 c0       	rjmp	.+12     	; 0x10cc <vfprintf+0x278>
+    10c0:	28 e0       	ldi	r18, 0x08	; 8
+    10c2:	30 e0       	ldi	r19, 0x00	; 0
+    10c4:	05 c0       	rjmp	.+10     	; 0x10d0 <vfprintf+0x27c>
+    10c6:	20 e1       	ldi	r18, 0x10	; 16
+    10c8:	30 e0       	ldi	r19, 0x00	; 0
+    10ca:	02 c0       	rjmp	.+4      	; 0x10d0 <vfprintf+0x27c>
+    10cc:	20 e1       	ldi	r18, 0x10	; 16
+    10ce:	32 e0       	ldi	r19, 0x02	; 2
+    10d0:	f8 01       	movw	r30, r16
+    10d2:	b7 fe       	sbrs	r11, 7
+    10d4:	07 c0       	rjmp	.+14     	; 0x10e4 <vfprintf+0x290>
+    10d6:	60 81       	ld	r22, Z
+    10d8:	71 81       	ldd	r23, Z+1	; 0x01
+    10da:	82 81       	ldd	r24, Z+2	; 0x02
+    10dc:	93 81       	ldd	r25, Z+3	; 0x03
+    10de:	0c 5f       	subi	r16, 0xFC	; 252
+    10e0:	1f 4f       	sbci	r17, 0xFF	; 255
+    10e2:	06 c0       	rjmp	.+12     	; 0x10f0 <vfprintf+0x29c>
+    10e4:	60 81       	ld	r22, Z
+    10e6:	71 81       	ldd	r23, Z+1	; 0x01
+    10e8:	80 e0       	ldi	r24, 0x00	; 0
+    10ea:	90 e0       	ldi	r25, 0x00	; 0
+    10ec:	0e 5f       	subi	r16, 0xFE	; 254
+    10ee:	1f 4f       	sbci	r17, 0xFF	; 255
+    10f0:	a3 01       	movw	r20, r6
+    10f2:	0e 94 5d 09 	call	0x12ba	; 0x12ba <__ultoa_invert>
+    10f6:	88 2e       	mov	r8, r24
+    10f8:	86 18       	sub	r8, r6
+    10fa:	fb 2d       	mov	r31, r11
+    10fc:	ff 77       	andi	r31, 0x7F	; 127
+    10fe:	3f 2e       	mov	r3, r31
+    1100:	36 fe       	sbrs	r3, 6
+    1102:	0d c0       	rjmp	.+26     	; 0x111e <vfprintf+0x2ca>
+    1104:	23 2d       	mov	r18, r3
+    1106:	2e 7f       	andi	r18, 0xFE	; 254
+    1108:	a2 2e       	mov	r10, r18
+    110a:	89 14       	cp	r8, r9
+    110c:	58 f4       	brcc	.+22     	; 0x1124 <vfprintf+0x2d0>
+    110e:	34 fe       	sbrs	r3, 4
+    1110:	0b c0       	rjmp	.+22     	; 0x1128 <vfprintf+0x2d4>
+    1112:	32 fc       	sbrc	r3, 2
+    1114:	09 c0       	rjmp	.+18     	; 0x1128 <vfprintf+0x2d4>
+    1116:	83 2d       	mov	r24, r3
+    1118:	8e 7e       	andi	r24, 0xEE	; 238
+    111a:	a8 2e       	mov	r10, r24
+    111c:	05 c0       	rjmp	.+10     	; 0x1128 <vfprintf+0x2d4>
+    111e:	b8 2c       	mov	r11, r8
+    1120:	a3 2c       	mov	r10, r3
+    1122:	03 c0       	rjmp	.+6      	; 0x112a <vfprintf+0x2d6>
+    1124:	b8 2c       	mov	r11, r8
+    1126:	01 c0       	rjmp	.+2      	; 0x112a <vfprintf+0x2d6>
+    1128:	b9 2c       	mov	r11, r9
+    112a:	a4 fe       	sbrs	r10, 4
+    112c:	0f c0       	rjmp	.+30     	; 0x114c <vfprintf+0x2f8>
+    112e:	fe 01       	movw	r30, r28
+    1130:	e8 0d       	add	r30, r8
+    1132:	f1 1d       	adc	r31, r1
+    1134:	80 81       	ld	r24, Z
+    1136:	80 33       	cpi	r24, 0x30	; 48
+    1138:	21 f4       	brne	.+8      	; 0x1142 <vfprintf+0x2ee>
+    113a:	9a 2d       	mov	r25, r10
+    113c:	99 7e       	andi	r25, 0xE9	; 233
+    113e:	a9 2e       	mov	r10, r25
+    1140:	09 c0       	rjmp	.+18     	; 0x1154 <vfprintf+0x300>
+    1142:	a2 fe       	sbrs	r10, 2
+    1144:	06 c0       	rjmp	.+12     	; 0x1152 <vfprintf+0x2fe>
+    1146:	b3 94       	inc	r11
+    1148:	b3 94       	inc	r11
+    114a:	04 c0       	rjmp	.+8      	; 0x1154 <vfprintf+0x300>
+    114c:	8a 2d       	mov	r24, r10
+    114e:	86 78       	andi	r24, 0x86	; 134
+    1150:	09 f0       	breq	.+2      	; 0x1154 <vfprintf+0x300>
+    1152:	b3 94       	inc	r11
+    1154:	a3 fc       	sbrc	r10, 3
+    1156:	11 c0       	rjmp	.+34     	; 0x117a <vfprintf+0x326>
+    1158:	a0 fe       	sbrs	r10, 0
+    115a:	06 c0       	rjmp	.+12     	; 0x1168 <vfprintf+0x314>
+    115c:	b2 14       	cp	r11, r2
+    115e:	88 f4       	brcc	.+34     	; 0x1182 <vfprintf+0x32e>
+    1160:	28 0c       	add	r2, r8
+    1162:	92 2c       	mov	r9, r2
+    1164:	9b 18       	sub	r9, r11
+    1166:	0e c0       	rjmp	.+28     	; 0x1184 <vfprintf+0x330>
+    1168:	b2 14       	cp	r11, r2
+    116a:	60 f4       	brcc	.+24     	; 0x1184 <vfprintf+0x330>
+    116c:	b6 01       	movw	r22, r12
+    116e:	80 e2       	ldi	r24, 0x20	; 32
+    1170:	90 e0       	ldi	r25, 0x00	; 0
+    1172:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    1176:	b3 94       	inc	r11
+    1178:	f7 cf       	rjmp	.-18     	; 0x1168 <vfprintf+0x314>
+    117a:	b2 14       	cp	r11, r2
+    117c:	18 f4       	brcc	.+6      	; 0x1184 <vfprintf+0x330>
+    117e:	2b 18       	sub	r2, r11
+    1180:	02 c0       	rjmp	.+4      	; 0x1186 <vfprintf+0x332>
+    1182:	98 2c       	mov	r9, r8
+    1184:	21 2c       	mov	r2, r1
+    1186:	a4 fe       	sbrs	r10, 4
+    1188:	10 c0       	rjmp	.+32     	; 0x11aa <vfprintf+0x356>
+    118a:	b6 01       	movw	r22, r12
+    118c:	80 e3       	ldi	r24, 0x30	; 48
+    118e:	90 e0       	ldi	r25, 0x00	; 0
+    1190:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    1194:	a2 fe       	sbrs	r10, 2
+    1196:	17 c0       	rjmp	.+46     	; 0x11c6 <vfprintf+0x372>
+    1198:	a1 fc       	sbrc	r10, 1
+    119a:	03 c0       	rjmp	.+6      	; 0x11a2 <vfprintf+0x34e>
+    119c:	88 e7       	ldi	r24, 0x78	; 120
+    119e:	90 e0       	ldi	r25, 0x00	; 0
+    11a0:	02 c0       	rjmp	.+4      	; 0x11a6 <vfprintf+0x352>
+    11a2:	88 e5       	ldi	r24, 0x58	; 88
+    11a4:	90 e0       	ldi	r25, 0x00	; 0
+    11a6:	b6 01       	movw	r22, r12
+    11a8:	0c c0       	rjmp	.+24     	; 0x11c2 <vfprintf+0x36e>
+    11aa:	8a 2d       	mov	r24, r10
+    11ac:	86 78       	andi	r24, 0x86	; 134
+    11ae:	59 f0       	breq	.+22     	; 0x11c6 <vfprintf+0x372>
+    11b0:	a1 fe       	sbrs	r10, 1
+    11b2:	02 c0       	rjmp	.+4      	; 0x11b8 <vfprintf+0x364>
+    11b4:	8b e2       	ldi	r24, 0x2B	; 43
+    11b6:	01 c0       	rjmp	.+2      	; 0x11ba <vfprintf+0x366>
+    11b8:	80 e2       	ldi	r24, 0x20	; 32
+    11ba:	a7 fc       	sbrc	r10, 7
+    11bc:	8d e2       	ldi	r24, 0x2D	; 45
+    11be:	b6 01       	movw	r22, r12
+    11c0:	90 e0       	ldi	r25, 0x00	; 0
+    11c2:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    11c6:	89 14       	cp	r8, r9
+    11c8:	38 f4       	brcc	.+14     	; 0x11d8 <vfprintf+0x384>
+    11ca:	b6 01       	movw	r22, r12
+    11cc:	80 e3       	ldi	r24, 0x30	; 48
+    11ce:	90 e0       	ldi	r25, 0x00	; 0
+    11d0:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    11d4:	9a 94       	dec	r9
+    11d6:	f7 cf       	rjmp	.-18     	; 0x11c6 <vfprintf+0x372>
+    11d8:	8a 94       	dec	r8
+    11da:	f3 01       	movw	r30, r6
+    11dc:	e8 0d       	add	r30, r8
+    11de:	f1 1d       	adc	r31, r1
+    11e0:	80 81       	ld	r24, Z
+    11e2:	b6 01       	movw	r22, r12
+    11e4:	90 e0       	ldi	r25, 0x00	; 0
+    11e6:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    11ea:	81 10       	cpse	r8, r1
+    11ec:	f5 cf       	rjmp	.-22     	; 0x11d8 <vfprintf+0x384>
+    11ee:	22 20       	and	r2, r2
+    11f0:	09 f4       	brne	.+2      	; 0x11f4 <vfprintf+0x3a0>
+    11f2:	42 ce       	rjmp	.-892    	; 0xe78 <vfprintf+0x24>
+    11f4:	b6 01       	movw	r22, r12
+    11f6:	80 e2       	ldi	r24, 0x20	; 32
+    11f8:	90 e0       	ldi	r25, 0x00	; 0
+    11fa:	0e 94 21 09 	call	0x1242	; 0x1242 <fputc>
+    11fe:	2a 94       	dec	r2
+    1200:	f6 cf       	rjmp	.-20     	; 0x11ee <vfprintf+0x39a>
+    1202:	f6 01       	movw	r30, r12
+    1204:	86 81       	ldd	r24, Z+6	; 0x06
+    1206:	97 81       	ldd	r25, Z+7	; 0x07
+    1208:	02 c0       	rjmp	.+4      	; 0x120e <vfprintf+0x3ba>
+    120a:	8f ef       	ldi	r24, 0xFF	; 255
+    120c:	9f ef       	ldi	r25, 0xFF	; 255
+    120e:	2b 96       	adiw	r28, 0x0b	; 11
+    1210:	e2 e1       	ldi	r30, 0x12	; 18
+    1212:	0c 94 d7 09 	jmp	0x13ae	; 0x13ae <__epilogue_restores__>
+
+00001216 <strnlen_P>:
+    1216:	fc 01       	movw	r30, r24
+    1218:	05 90       	lpm	r0, Z+
+    121a:	61 50       	subi	r22, 0x01	; 1
+    121c:	70 40       	sbci	r23, 0x00	; 0
+    121e:	01 10       	cpse	r0, r1
+    1220:	d8 f7       	brcc	.-10     	; 0x1218 <strnlen_P+0x2>
+    1222:	80 95       	com	r24
+    1224:	90 95       	com	r25
+    1226:	8e 0f       	add	r24, r30
+    1228:	9f 1f       	adc	r25, r31
+    122a:	08 95       	ret
+
+0000122c <strnlen>:
+    122c:	fc 01       	movw	r30, r24
+    122e:	61 50       	subi	r22, 0x01	; 1
+    1230:	70 40       	sbci	r23, 0x00	; 0
+    1232:	01 90       	ld	r0, Z+
+    1234:	01 10       	cpse	r0, r1
+    1236:	d8 f7       	brcc	.-10     	; 0x122e <strnlen+0x2>
+    1238:	80 95       	com	r24
+    123a:	90 95       	com	r25
+    123c:	8e 0f       	add	r24, r30
+    123e:	9f 1f       	adc	r25, r31
+    1240:	08 95       	ret
+
+00001242 <fputc>:
+    1242:	0f 93       	push	r16
+    1244:	1f 93       	push	r17
+    1246:	cf 93       	push	r28
+    1248:	df 93       	push	r29
+    124a:	fb 01       	movw	r30, r22
+    124c:	23 81       	ldd	r18, Z+3	; 0x03
+    124e:	21 fd       	sbrc	r18, 1
+    1250:	03 c0       	rjmp	.+6      	; 0x1258 <fputc+0x16>
+    1252:	8f ef       	ldi	r24, 0xFF	; 255
+    1254:	9f ef       	ldi	r25, 0xFF	; 255
+    1256:	2c c0       	rjmp	.+88     	; 0x12b0 <fputc+0x6e>
+    1258:	22 ff       	sbrs	r18, 2
+    125a:	16 c0       	rjmp	.+44     	; 0x1288 <fputc+0x46>
+    125c:	46 81       	ldd	r20, Z+6	; 0x06
+    125e:	57 81       	ldd	r21, Z+7	; 0x07
+    1260:	24 81       	ldd	r18, Z+4	; 0x04
+    1262:	35 81       	ldd	r19, Z+5	; 0x05
+    1264:	42 17       	cp	r20, r18
+    1266:	53 07       	cpc	r21, r19
+    1268:	44 f4       	brge	.+16     	; 0x127a <fputc+0x38>
+    126a:	a0 81       	ld	r26, Z
+    126c:	b1 81       	ldd	r27, Z+1	; 0x01
+    126e:	9d 01       	movw	r18, r26
+    1270:	2f 5f       	subi	r18, 0xFF	; 255
+    1272:	3f 4f       	sbci	r19, 0xFF	; 255
+    1274:	31 83       	std	Z+1, r19	; 0x01
+    1276:	20 83       	st	Z, r18
+    1278:	8c 93       	st	X, r24
+    127a:	26 81       	ldd	r18, Z+6	; 0x06
+    127c:	37 81       	ldd	r19, Z+7	; 0x07
+    127e:	2f 5f       	subi	r18, 0xFF	; 255
+    1280:	3f 4f       	sbci	r19, 0xFF	; 255
+    1282:	37 83       	std	Z+7, r19	; 0x07
+    1284:	26 83       	std	Z+6, r18	; 0x06
+    1286:	14 c0       	rjmp	.+40     	; 0x12b0 <fputc+0x6e>
+    1288:	8b 01       	movw	r16, r22
+    128a:	ec 01       	movw	r28, r24
+    128c:	fb 01       	movw	r30, r22
+    128e:	00 84       	ldd	r0, Z+8	; 0x08
+    1290:	f1 85       	ldd	r31, Z+9	; 0x09
+    1292:	e0 2d       	mov	r30, r0
+    1294:	09 95       	icall
+    1296:	89 2b       	or	r24, r25
+    1298:	e1 f6       	brne	.-72     	; 0x1252 <fputc+0x10>
+    129a:	d8 01       	movw	r26, r16
+    129c:	16 96       	adiw	r26, 0x06	; 6
+    129e:	8d 91       	ld	r24, X+
+    12a0:	9c 91       	ld	r25, X
+    12a2:	17 97       	sbiw	r26, 0x07	; 7
+    12a4:	01 96       	adiw	r24, 0x01	; 1
+    12a6:	17 96       	adiw	r26, 0x07	; 7
+    12a8:	9c 93       	st	X, r25
+    12aa:	8e 93       	st	-X, r24
+    12ac:	16 97       	sbiw	r26, 0x06	; 6
+    12ae:	ce 01       	movw	r24, r28
+    12b0:	df 91       	pop	r29
+    12b2:	cf 91       	pop	r28
+    12b4:	1f 91       	pop	r17
+    12b6:	0f 91       	pop	r16
+    12b8:	08 95       	ret
+
+000012ba <__ultoa_invert>:
+    12ba:	fa 01       	movw	r30, r20
+    12bc:	aa 27       	eor	r26, r26
+    12be:	28 30       	cpi	r18, 0x08	; 8
+    12c0:	51 f1       	breq	.+84     	; 0x1316 <__ultoa_invert+0x5c>
+    12c2:	20 31       	cpi	r18, 0x10	; 16
+    12c4:	81 f1       	breq	.+96     	; 0x1326 <__ultoa_invert+0x6c>
+    12c6:	e8 94       	clt
+    12c8:	6f 93       	push	r22
+    12ca:	6e 7f       	andi	r22, 0xFE	; 254
+    12cc:	6e 5f       	subi	r22, 0xFE	; 254
+    12ce:	7f 4f       	sbci	r23, 0xFF	; 255
+    12d0:	8f 4f       	sbci	r24, 0xFF	; 255
+    12d2:	9f 4f       	sbci	r25, 0xFF	; 255
+    12d4:	af 4f       	sbci	r26, 0xFF	; 255
+    12d6:	b1 e0       	ldi	r27, 0x01	; 1
+    12d8:	3e d0       	rcall	.+124    	; 0x1356 <__ultoa_invert+0x9c>
+    12da:	b4 e0       	ldi	r27, 0x04	; 4
+    12dc:	3c d0       	rcall	.+120    	; 0x1356 <__ultoa_invert+0x9c>
+    12de:	67 0f       	add	r22, r23
+    12e0:	78 1f       	adc	r23, r24
+    12e2:	89 1f       	adc	r24, r25
+    12e4:	9a 1f       	adc	r25, r26
+    12e6:	a1 1d       	adc	r26, r1
+    12e8:	68 0f       	add	r22, r24
+    12ea:	79 1f       	adc	r23, r25
+    12ec:	8a 1f       	adc	r24, r26
+    12ee:	91 1d       	adc	r25, r1
+    12f0:	a1 1d       	adc	r26, r1
+    12f2:	6a 0f       	add	r22, r26
+    12f4:	71 1d       	adc	r23, r1
+    12f6:	81 1d       	adc	r24, r1
+    12f8:	91 1d       	adc	r25, r1
+    12fa:	a1 1d       	adc	r26, r1
+    12fc:	20 d0       	rcall	.+64     	; 0x133e <__ultoa_invert+0x84>
+    12fe:	09 f4       	brne	.+2      	; 0x1302 <__ultoa_invert+0x48>
+    1300:	68 94       	set
+    1302:	3f 91       	pop	r19
+    1304:	2a e0       	ldi	r18, 0x0A	; 10
+    1306:	26 9f       	mul	r18, r22
+    1308:	11 24       	eor	r1, r1
+    130a:	30 19       	sub	r19, r0
+    130c:	30 5d       	subi	r19, 0xD0	; 208
+    130e:	31 93       	st	Z+, r19
+    1310:	de f6       	brtc	.-74     	; 0x12c8 <__ultoa_invert+0xe>
+    1312:	cf 01       	movw	r24, r30
+    1314:	08 95       	ret
+    1316:	46 2f       	mov	r20, r22
+    1318:	47 70       	andi	r20, 0x07	; 7
+    131a:	40 5d       	subi	r20, 0xD0	; 208
+    131c:	41 93       	st	Z+, r20
+    131e:	b3 e0       	ldi	r27, 0x03	; 3
+    1320:	0f d0       	rcall	.+30     	; 0x1340 <__ultoa_invert+0x86>
+    1322:	c9 f7       	brne	.-14     	; 0x1316 <__ultoa_invert+0x5c>
+    1324:	f6 cf       	rjmp	.-20     	; 0x1312 <__ultoa_invert+0x58>
+    1326:	46 2f       	mov	r20, r22
+    1328:	4f 70       	andi	r20, 0x0F	; 15
+    132a:	40 5d       	subi	r20, 0xD0	; 208
+    132c:	4a 33       	cpi	r20, 0x3A	; 58
+    132e:	18 f0       	brcs	.+6      	; 0x1336 <__ultoa_invert+0x7c>
+    1330:	49 5d       	subi	r20, 0xD9	; 217
+    1332:	31 fd       	sbrc	r19, 1
+    1334:	40 52       	subi	r20, 0x20	; 32
+    1336:	41 93       	st	Z+, r20
+    1338:	02 d0       	rcall	.+4      	; 0x133e <__ultoa_invert+0x84>
+    133a:	a9 f7       	brne	.-22     	; 0x1326 <__ultoa_invert+0x6c>
+    133c:	ea cf       	rjmp	.-44     	; 0x1312 <__ultoa_invert+0x58>
+    133e:	b4 e0       	ldi	r27, 0x04	; 4
+    1340:	a6 95       	lsr	r26
+    1342:	97 95       	ror	r25
+    1344:	87 95       	ror	r24
+    1346:	77 95       	ror	r23
+    1348:	67 95       	ror	r22
+    134a:	ba 95       	dec	r27
+    134c:	c9 f7       	brne	.-14     	; 0x1340 <__ultoa_invert+0x86>
+    134e:	00 97       	sbiw	r24, 0x00	; 0
+    1350:	61 05       	cpc	r22, r1
+    1352:	71 05       	cpc	r23, r1
+    1354:	08 95       	ret
+    1356:	9b 01       	movw	r18, r22
+    1358:	ac 01       	movw	r20, r24
+    135a:	0a 2e       	mov	r0, r26
+    135c:	06 94       	lsr	r0
+    135e:	57 95       	ror	r21
+    1360:	47 95       	ror	r20
+    1362:	37 95       	ror	r19
+    1364:	27 95       	ror	r18
+    1366:	ba 95       	dec	r27
+    1368:	c9 f7       	brne	.-14     	; 0x135c <__ultoa_invert+0xa2>
+    136a:	62 0f       	add	r22, r18
+    136c:	73 1f       	adc	r23, r19
+    136e:	84 1f       	adc	r24, r20
+    1370:	95 1f       	adc	r25, r21
+    1372:	a0 1d       	adc	r26, r0
+    1374:	08 95       	ret
+
+00001376 <__prologue_saves__>:
+    1376:	2f 92       	push	r2
+    1378:	3f 92       	push	r3
+    137a:	4f 92       	push	r4
+    137c:	5f 92       	push	r5
+    137e:	6f 92       	push	r6
+    1380:	7f 92       	push	r7
+    1382:	8f 92       	push	r8
+    1384:	9f 92       	push	r9
+    1386:	af 92       	push	r10
+    1388:	bf 92       	push	r11
+    138a:	cf 92       	push	r12
+    138c:	df 92       	push	r13
+    138e:	ef 92       	push	r14
+    1390:	ff 92       	push	r15
+    1392:	0f 93       	push	r16
+    1394:	1f 93       	push	r17
+    1396:	cf 93       	push	r28
+    1398:	df 93       	push	r29
+    139a:	cd b7       	in	r28, 0x3d	; 61
+    139c:	de b7       	in	r29, 0x3e	; 62
+    139e:	ca 1b       	sub	r28, r26
+    13a0:	db 0b       	sbc	r29, r27
+    13a2:	0f b6       	in	r0, 0x3f	; 63
+    13a4:	f8 94       	cli
+    13a6:	de bf       	out	0x3e, r29	; 62
+    13a8:	0f be       	out	0x3f, r0	; 63
+    13aa:	cd bf       	out	0x3d, r28	; 61
+    13ac:	09 94       	ijmp
+
+000013ae <__epilogue_restores__>:
+    13ae:	2a 88       	ldd	r2, Y+18	; 0x12
+    13b0:	39 88       	ldd	r3, Y+17	; 0x11
+    13b2:	48 88       	ldd	r4, Y+16	; 0x10
+    13b4:	5f 84       	ldd	r5, Y+15	; 0x0f
+    13b6:	6e 84       	ldd	r6, Y+14	; 0x0e
+    13b8:	7d 84       	ldd	r7, Y+13	; 0x0d
+    13ba:	8c 84       	ldd	r8, Y+12	; 0x0c
+    13bc:	9b 84       	ldd	r9, Y+11	; 0x0b
+    13be:	aa 84       	ldd	r10, Y+10	; 0x0a
+    13c0:	b9 84       	ldd	r11, Y+9	; 0x09
+    13c2:	c8 84       	ldd	r12, Y+8	; 0x08
+    13c4:	df 80       	ldd	r13, Y+7	; 0x07
+    13c6:	ee 80       	ldd	r14, Y+6	; 0x06
+    13c8:	fd 80       	ldd	r15, Y+5	; 0x05
+    13ca:	0c 81       	ldd	r16, Y+4	; 0x04
+    13cc:	1b 81       	ldd	r17, Y+3	; 0x03
+    13ce:	aa 81       	ldd	r26, Y+2	; 0x02
+    13d0:	b9 81       	ldd	r27, Y+1	; 0x01
+    13d2:	ce 0f       	add	r28, r30
+    13d4:	d1 1d       	adc	r29, r1
+    13d6:	0f b6       	in	r0, 0x3f	; 63
+    13d8:	f8 94       	cli
+    13da:	de bf       	out	0x3e, r29	; 62
+    13dc:	0f be       	out	0x3f, r0	; 63
+    13de:	cd bf       	out	0x3d, r28	; 61
+    13e0:	ed 01       	movw	r28, r26
+    13e2:	08 95       	ret
+
+000013e4 <_exit>:
+    13e4:	f8 94       	cli
+
+000013e6 <__stop_program>:
+    13e6:	ff cf       	rjmp	.-2      	; 0x13e6 <__stop_program>
